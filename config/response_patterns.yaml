@@ -1,0 +1,15 @@
+version: "1.0"
+last_updated: "2026-01-28"
+description: "Learned response field paths for fal.ai models"
+
+# This file is auto-populated as the system learns successful response patterns
+# Format:
+# model_endpoint_id:
+#   success_count: int
+#   fail_count: int
+#   learned_paths:
+#     - path: "string (e.g., images[0].url)"
+#       success_rate: float
+#       last_seen: "ISO timestamp"
+
+patterns: {}
