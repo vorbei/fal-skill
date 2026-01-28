@@ -116,7 +116,7 @@ categories:
         duration: "int (optional, default: 5)"
 
   image-editing:
-    - endpoint_id: fal-ai/fibo-edit/colorize
+    - endpoint_id: bria/fibo-edit/colorize
       display_name: Fibo Edit - Colorize
       description: "Add natural color to black & white photos"
       cost_tier: budget
@@ -128,7 +128,7 @@ categories:
         image_url: "string (required)"
         strength: "float (optional, default: 0.8, range: 0-1)"
 
-    - endpoint_id: fal-ai/fibo-edit/relight
+    - endpoint_id: bria/fibo-edit/relight
       display_name: Fibo Edit - Relight
       description: "Change lighting conditions in photos"
       cost_tier: budget
@@ -141,7 +141,7 @@ categories:
         lighting_prompt: "string (optional, lighting description)"
         strength: "float (optional, default: 0.8)"
 
-    - endpoint_id: fal-ai/fibo-edit/reseason
+    - endpoint_id: bria/fibo-edit/reseason
       display_name: Fibo Edit - Reseason
       description: "Transform the season in outdoor photos"
       cost_tier: budget
@@ -153,7 +153,7 @@ categories:
         image_url: "string (required)"
         season: "string (optional, choices: ['spring', 'summer', 'fall', 'winter'])"
 
-    - endpoint_id: fal-ai/fibo-edit/restore
+    - endpoint_id: bria/fibo-edit/restore
       display_name: Fibo Edit - Restore
       description: "Repair old, damaged, or low-quality photos"
       cost_tier: budget
@@ -165,7 +165,7 @@ categories:
         image_url: "string (required)"
         strength: "float (optional, default: 0.8)"
 
-    - endpoint_id: fal-ai/fibo-edit/restyle
+    - endpoint_id: bria/fibo-edit/restyle
       display_name: Fibo Edit - Restyle
       description: "Apply artistic styles to photos"
       cost_tier: budget
@@ -179,7 +179,7 @@ categories:
         strength: "float (optional, default: 0.8)"
 
   upscale:
-    - endpoint_id: fal-ai/crystal-upscaler
+    - endpoint_id: clarityai/crystal-upscaler
       display_name: Crystal Upscaler
       description: "General-purpose AI upscaling (2x, 4x, 8x)"
       cost_tier: standard
