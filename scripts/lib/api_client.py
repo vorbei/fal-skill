@@ -189,8 +189,37 @@ class FalAPIClient:
             )
 
         try:
+            from fal_client import Queued, InProgress, Completed
+
             status = fal_client.status(endpoint_id, request_id, with_logs=True)
-            return status
+
+            # Handle both dict (from mocks) and object (from real SDK) responses
+            if isinstance(status, dict):
+                return status
+
+            # Convert Status object to dictionary based on type
+            if isinstance(status, Completed):
+                return {
+                    "status": "COMPLETED",
+                    "logs": status.logs or [],
+                    "metrics": status.metrics if hasattr(status, 'metrics') else {}
+                }
+            elif isinstance(status, InProgress):
+                return {
+                    "status": "IN_PROGRESS",
+                    "logs": status.logs or []
+                }
+            elif isinstance(status, Queued):
+                return {
+                    "status": "IN_QUEUE",
+                    "position": status.position if hasattr(status, 'position') else 0
+                }
+            else:
+                # Fallback for unknown status types
+                return {
+                    "status": "UNKNOWN",
+                    "logs": []
+                }
 
         except Exception as e:
             logger.error(f"Status Error: {str(e)}")

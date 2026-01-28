@@ -1,0 +1,3 @@
+INFO: Submitting request to fal-ai/fibo-edit/colorize via queue system
+ERROR: API Error: Application 'fibo-edit' not found
+Error: Failed to execute model fal-ai/fibo-edit/colorize: Application 'fibo-edit' not found

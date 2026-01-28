@@ -1,0 +1,3 @@
+INFO: Submitting request to fal-ai/flux/dev via queue system
+INFO: Request completed successfully
+{"url": "https://v3b.fal.media/files/b/0a8c351a/It5-De5wemomRfaSCB8O0.jpg", "model": "fal-ai/flux/dev", "prompt": "a cute cat wearing a wizard hat"}

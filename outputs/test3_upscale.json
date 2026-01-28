@@ -1,0 +1,3 @@
+INFO: Submitting request to fal-ai/crystal-upscaler via queue system
+INFO: Request completed successfully
+{"url": "https://v3b.fal.media/files/b/0a8c351e/LSR3RYRiTyKdg2BNRkI5G_upscaled.jpg", "model": "fal-ai/crystal-upscaler", "scale": 2, "type": "image"}
