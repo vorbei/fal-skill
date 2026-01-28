@@ -64,12 +64,61 @@ class FalAPIClient:
                 logger.warning(f"Request failed, retrying in {wait_time}s...")
                 time.sleep(wait_time)
 
+    def _poll_for_result(self, status_url: str, response_url: str, max_wait: int = 300) -> Dict[str, Any]:
+        """Poll status URL until job completes, then fetch result"""
+        headers = {
+            "Authorization": f"Key {self.api_key}",
+            "Content-Type": "application/json"
+        }
+
+        start_time = time.time()
+        poll_interval = 0.5  # Start with 0.5s polling
+
+        while time.time() - start_time < max_wait:
+            # Poll status endpoint
+            req = urllib.request.Request(status_url, headers=headers, method='GET')
+
+            try:
+                with urllib.request.urlopen(req, timeout=self.TIMEOUT) as response:
+                    status_result = json.loads(response.read().decode('utf-8'))
+
+                    status = status_result.get('status')
+
+                    if status == 'COMPLETED':
+                        logger.info("Job completed successfully")
+                        # Fetch final result from response_url
+                        result_req = urllib.request.Request(response_url, headers=headers, method='GET')
+                        with urllib.request.urlopen(result_req, timeout=self.TIMEOUT) as result_response:
+                            return json.loads(result_response.read().decode('utf-8'))
+
+                    elif status == 'FAILED' or status == 'ERROR':
+                        error_msg = status_result.get('error', 'Unknown error')
+                        raise Exception(f"Job failed: {error_msg}")
+                    elif status == 'IN_QUEUE' or status == 'IN_PROGRESS':
+                        # Continue polling
+                        time.sleep(poll_interval)
+                        # Increase poll interval gradually (max 2s)
+                        poll_interval = min(poll_interval * 1.5, 2.0)
+                    else:
+                        logger.warning(f"Unknown status: {status}")
+                        time.sleep(poll_interval)
+
+            except urllib.error.HTTPError as e:
+                if e.code == 404:
+                    # Request might not be ready yet
+                    time.sleep(poll_interval)
+                else:
+                    error_body = e.read().decode('utf-8')
+                    raise Exception(f"Polling error {e.code}: {error_body}")
+
+        raise TimeoutError(f"Job did not complete within {max_wait}s")
+
     def run_model(self, endpoint_id: str, input_data: Dict[str, Any]) -> Dict[str, Any]:
         """Execute a model and return results"""
         self._validate_endpoint_id(endpoint_id)
 
         # Limit input size to prevent memory issues
-        input_json = json.dumps({"input": input_data})
+        input_json = json.dumps(input_data)
         if len(input_json) > 1_000_000:  # 1MB limit
             raise ValueError("Input data too large (>1MB)")
 
@@ -84,7 +133,19 @@ class FalAPIClient:
 
             try:
                 with urllib.request.urlopen(req, timeout=self.TIMEOUT) as response:
-                    return json.loads(response.read().decode('utf-8'))
+                    initial_response = json.loads(response.read().decode('utf-8'))
+
+                    # Check if response is queued (async execution)
+                    if 'status' in initial_response and initial_response['status'] in ['IN_QUEUE', 'IN_PROGRESS']:
+                        status_url = initial_response.get('status_url')
+                        response_url = initial_response.get('response_url')
+                        if status_url and response_url:
+                            logger.info("Job queued, polling for result...")
+                            return self._poll_for_result(status_url, response_url)
+
+                    # Synchronous response or already completed
+                    return initial_response
+
             except urllib.error.HTTPError as e:
                 error_body = e.read().decode('utf-8')
                 raise Exception(f"API Error {e.code}: {error_body}")
