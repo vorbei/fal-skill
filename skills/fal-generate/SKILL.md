@@ -90,6 +90,28 @@ case "$SKILL" in
     exec "$SCRIPT_DIR/skills/fal-generate-image/SKILL.md" $ARGS
     ;;
 
+  fal-generate-video)
+    # Call fal-generate-video with detected args
+    # The detect_intent script returns args in the format:
+    # ["prompt text", "--duration N", "--aspect-ratio RATIO"]
+    # or ["prompt text", "--image-url URL", "--duration N", "--aspect-ratio RATIO"]
+    exec "$SCRIPT_DIR/skills/fal-generate-video/SKILL.md" $ARGS
+    ;;
+
+  fal-edit-photo)
+    # Call fal-edit-photo with detected args
+    # The detect_intent script returns args in the format:
+    # ["image_url", "--operation OP", "--prompt PROMPT"]
+    exec "$SCRIPT_DIR/skills/fal-edit-photo/SKILL.md" $ARGS
+    ;;
+
+  fal-upscale)
+    # Call fal-upscale with detected args
+    # The detect_intent script returns args in the format:
+    # ["file_url", "--scale N", "--type TYPE"]
+    exec "$SCRIPT_DIR/skills/fal-upscale/SKILL.md" $ARGS
+    ;;
+
   fal-remove-bg)
     # Call fal-remove-bg with detected args
     # The detect_intent script returns args in the format:
@@ -102,6 +124,9 @@ case "$SKILL" in
     echo ""
     echo "Supported skills:"
     echo "  - fal-generate-image (text-to-image generation)"
+    echo "  - fal-generate-video (text-to-video, image-to-video)"
+    echo "  - fal-edit-photo (advanced image editing)"
+    echo "  - fal-upscale (image/video enhancement)"
     echo "  - fal-remove-bg (background removal)"
     exit 1
     ;;
@@ -110,16 +135,34 @@ esac
 
 ## Intent Detection Examples
 
-**Text-to-Image** (default):
-- `"a wizard cat"` → `/fal-generate-image "a wizard cat" --size square_hd --quality balanced`
-- `"portrait of a warrior"` → `/fal-generate-image "of a warrior" --size portrait_16_9 --quality balanced`
-- `"quick sketch of a car"` → `/fal-generate-image "sketch of a car" --size square_hd --quality fast`
-- `"detailed landscape"` → `/fal-generate-image "landscape" --size square_hd --quality high`
+**Text-to-Video**:
+- `"create a video of a wizard cat"` → `/fal-generate-video "..." --duration 5 --aspect-ratio 16:9`
+- `"10 second video of ocean waves"` → `/fal-generate-video "..." --duration 10 --aspect-ratio 16:9`
+- `"vertical video of fireworks"` → `/fal-generate-video "..." --duration 5 --aspect-ratio 9:16`
+
+**Image-to-Video** (animate images):
+- `"animate this image: cat.jpg"` → `/fal-generate-video "..." --image-url cat.jpg --duration 5`
+- `"make portrait.jpg move"` → `/fal-generate-video "..." --image-url portrait.jpg --duration 5`
+
+**Photo Editing**:
+- `"colorize photo.jpg"` → `/fal-edit-photo photo.jpg --operation colorize`
+- `"relight image.jpg with sunset"` → `/fal-edit-photo image.jpg --operation relight --lighting-prompt "sunset"`
+- `"change season to winter in landscape.jpg"` → `/fal-edit-photo landscape.jpg --operation reseason --season winter`
+
+**Upscaling**:
+- `"upscale image.jpg 2x"` → `/fal-upscale image.jpg --scale 2 --type image`
+- `"enhance video.mp4 4x"` → `/fal-upscale video.mp4 --scale 4 --type video`
 
 **Background Removal**:
 - `"remove background from photo.jpg"` → `/fal-remove-bg photo.jpg`
 - `"make transparent: image.png"` → `/fal-remove-bg image.png`
 - `"cut out https://example.com/photo.jpg"` → `/fal-remove-bg https://example.com/photo.jpg`
+
+**Text-to-Image** (default fallback):
+- `"a wizard cat"` → `/fal-generate-image "a wizard cat" --size square_hd --quality balanced`
+- `"portrait of a warrior"` → `/fal-generate-image "of a warrior" --size portrait_16_9 --quality balanced`
+- `"quick sketch of a car"` → `/fal-generate-image "sketch of a car" --size square_hd --quality fast`
+- `"detailed landscape"` → `/fal-generate-image "landscape" --size square_hd --quality high`
 
 ## Error Handling
 

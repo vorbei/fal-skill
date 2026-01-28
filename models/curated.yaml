@@ -62,12 +62,145 @@ categories:
     - endpoint_id: fal-ai/kling-video/v1/standard/text-to-video
       display_name: Kling Video v1 Standard
       description: "Text-to-video generation, 5-10 second clips"
-      cost_tier: premium
+      cost_tier: standard
       speed_tier: slow
       quality_tier: high
       recommended: true
       tested: false
       params:
         prompt: "string (required)"
-        duration: "number (optional, default: 5, max: 10)"
-        aspect_ratio: "string (optional, default: 16:9)"
+        duration: "int (optional, default: 5, choices: [5, 10])"
+        aspect_ratio: "string (optional, default: '16:9', choices: ['16:9', '9:16', '1:1', '4:3', '3:4'])"
+        negative_prompt: "string (optional)"
+
+    - endpoint_id: fal-ai/kling-video/v1/pro/text-to-video
+      display_name: Kling Video v1 Pro
+      description: "High-quality text-to-video, 5-10 second clips"
+      cost_tier: premium
+      speed_tier: slow
+      quality_tier: highest
+      recommended: false
+      tested: false
+      params:
+        prompt: "string (required)"
+        duration: "int (optional, default: 5, choices: [5, 10])"
+        aspect_ratio: "string (optional, default: '16:9')"
+        negative_prompt: "string (optional)"
+
+  image-to-video:
+    - endpoint_id: fal-ai/kling-video/v1/standard/image-to-video
+      display_name: Kling Video v1 Standard (Image-to-Video)
+      description: "Animate images with AI-generated motion"
+      cost_tier: standard
+      speed_tier: slow
+      quality_tier: high
+      recommended: true
+      tested: false
+      params:
+        image_url: "string (required)"
+        prompt: "string (optional, motion description)"
+        duration: "int (optional, default: 5, choices: [5, 10])"
+        negative_prompt: "string (optional)"
+
+    - endpoint_id: fal-ai/kling-video/v1/pro/image-to-video
+      display_name: Kling Video v1 Pro (Image-to-Video)
+      description: "High-quality image animation"
+      cost_tier: premium
+      speed_tier: slow
+      quality_tier: highest
+      recommended: false
+      tested: false
+      params:
+        image_url: "string (required)"
+        prompt: "string (optional)"
+        duration: "int (optional, default: 5)"
+
+  image-editing:
+    - endpoint_id: fal-ai/fibo-edit/colorize
+      display_name: Fibo Edit - Colorize
+      description: "Add natural color to black & white photos"
+      cost_tier: budget
+      speed_tier: fast
+      quality_tier: high
+      recommended: true
+      tested: false
+      params:
+        image_url: "string (required)"
+        strength: "float (optional, default: 0.8, range: 0-1)"
+
+    - endpoint_id: fal-ai/fibo-edit/relight
+      display_name: Fibo Edit - Relight
+      description: "Change lighting conditions in photos"
+      cost_tier: budget
+      speed_tier: fast
+      quality_tier: high
+      recommended: true
+      tested: false
+      params:
+        image_url: "string (required)"
+        lighting_prompt: "string (optional, lighting description)"
+        strength: "float (optional, default: 0.8)"
+
+    - endpoint_id: fal-ai/fibo-edit/reseason
+      display_name: Fibo Edit - Reseason
+      description: "Transform the season in outdoor photos"
+      cost_tier: budget
+      speed_tier: fast
+      quality_tier: high
+      recommended: true
+      tested: false
+      params:
+        image_url: "string (required)"
+        season: "string (optional, choices: ['spring', 'summer', 'fall', 'winter'])"
+
+    - endpoint_id: fal-ai/fibo-edit/restore
+      display_name: Fibo Edit - Restore
+      description: "Repair old, damaged, or low-quality photos"
+      cost_tier: budget
+      speed_tier: fast
+      quality_tier: high
+      recommended: true
+      tested: false
+      params:
+        image_url: "string (required)"
+        strength: "float (optional, default: 0.8)"
+
+    - endpoint_id: fal-ai/fibo-edit/restyle
+      display_name: Fibo Edit - Restyle
+      description: "Apply artistic styles to photos"
+      cost_tier: budget
+      speed_tier: fast
+      quality_tier: high
+      recommended: true
+      tested: false
+      params:
+        image_url: "string (required)"
+        style_prompt: "string (optional, style description)"
+        strength: "float (optional, default: 0.8)"
+
+  upscale:
+    - endpoint_id: fal-ai/crystal-upscaler
+      display_name: Crystal Upscaler
+      description: "General-purpose AI upscaling (2x, 4x, 8x)"
+      cost_tier: standard
+      speed_tier: medium
+      quality_tier: high
+      recommended: true
+      tested: false
+      params:
+        image_url: "string (optional, for image upscaling)"
+        video_url: "string (optional, for video upscaling)"
+        scale: "int (required, choices: [2, 4, 8])"
+        creativity: "float (optional, default: 0.35, range: 0-1)"
+
+    - endpoint_id: fal-ai/clarity-upscaler
+      display_name: Clarity Upscaler
+      description: "Photo-optimized upscaling (2x, 4x)"
+      cost_tier: premium
+      speed_tier: medium
+      quality_tier: highest
+      recommended: false
+      tested: false
+      params:
+        image_url: "string (required)"
+        scale: "int (required, choices: [2, 4])"

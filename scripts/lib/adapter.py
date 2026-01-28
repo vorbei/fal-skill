@@ -14,20 +14,62 @@ class ResponseAdapter:
 
     # Common field patterns to try (in order of likelihood)
     COMMON_PATTERNS = [
+        # Image patterns (most common)
         "images[0].url",
         "data.images[0].url",
         "image.url",
         "data.image.url",
+
+        # Video generation patterns (text-to-video, image-to-video)
+        "video.url",
+        "data.video.url",
+        "video_url",
+        "output.video.url",
+        "result.video.url",
+        "videos[0].url",
+
+        # Audio patterns (TTS, Music)
+        "audio.url",
+        "data.audio.url",
+        "audio_url",
+        "speech_url",
+        "music.url",
+        "data.music.url",
+        "output.audio.url",
+
+        # Fibo Edit patterns (image editing)
+        "edited_image.url",
+        "result.edited_image.url",
+        "output.image.url",
+        "data.result.url",
+
+        # Upscale patterns
+        "upscaled_image.url",
+        "upscaled_video.url",
+        "enhanced.url",
+        "result.enhanced.url",
+
+        # Avatar/video patterns
+        "avatar.url",
+        "data.avatar.url",
+        "lipsync_video_url",
+
+        # Face operation patterns
+        "face.url",
+        "data.face.url",
+        "swapped_image.url",
+        "result.image.url",
+
+        # Generic result patterns (fallback)
         "output.url",
         "data.output.url",
         "result.url",
         "data.result.url",
         "url",
         "data.url",
-        "video.url",
-        "data.video.url",
-        "audio.url",
-        "data.audio.url",
+        "output_url",
+        "result_url",
+        "data.output_url",
         "file.url"
     ]
 
