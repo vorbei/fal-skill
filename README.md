@@ -74,9 +74,24 @@ fal-skill/
 
 ## Requirements
 
-- Python 3.8+ (stdlib only, no external dependencies)
+- Python 3.8+
+- `uv` (fast Python package manager - [install here](https://github.com/astral-sh/uv))
 - fal.ai API key (get one at https://fal.ai/dashboard/keys)
 - Claude Code
+
+## Installation
+
+```bash
+# Install dependencies with uv (recommended)
+uv pip install -r requirements.txt
+
+# Or create and activate virtual environment
+uv venv
+source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+uv pip install -r requirements.txt
+```
+
+See [DEVELOPMENT.md](DEVELOPMENT.md) for detailed development guidelines.
 
 ## Project Status
 
