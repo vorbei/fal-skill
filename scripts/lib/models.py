@@ -11,12 +11,22 @@ class ModelRegistry:
 
     def _load_curated_models(self) -> Dict[str, Any]:
         """Load curated models from YAML"""
-        # Get the project root (3 levels up from lib/)
-        current_dir = os.path.dirname(os.path.abspath(__file__))
-        project_root = os.path.dirname(os.path.dirname(current_dir))
+        # Try environment variable first
+        project_root = os.environ.get('FAL_SKILL_ROOT')
+
+        if not project_root:
+            # Fallback: navigate up from this file
+            current_dir = os.path.dirname(os.path.abspath(__file__))
+            project_root = os.path.dirname(os.path.dirname(current_dir))
+
         curated_path = os.path.join(project_root, "models", "curated.yaml")
 
         if not os.path.exists(curated_path):
+            # Second fallback: check current working directory
+            curated_path = os.path.join(os.getcwd(), "models", "curated.yaml")
+
+        if not os.path.exists(curated_path):
+            print(f"Warning: curated.yaml not found at {curated_path}")
             return {"categories": {}}
 
         with open(curated_path, 'r') as f:
