@@ -16,7 +16,7 @@ status: ready
 - ✅ Git repository initialized
 - ✅ Planning and architecture complete
 - ✅ Brainstorming documents available
-- [ ] fal.ai API key available for testing
+- ✅ fal.ai API key available for testing
 
 ---
 
@@ -65,9 +65,9 @@ fal-skill/
 4. Initialize README with project description
 
 **Success Criteria**:
-- [ ] All directories exist
-- [ ] .gitignore covers `.pyc`, `__pycache__`, `.env`, `cache/*.json`
-- [ ] README has project title and brief description
+- [x] All directories exist
+- [x] .gitignore covers `.pyc`, `__pycache__`, `.env`, `cache/*.json`
+- [x] README has project title and brief description
 
 **Estimated Time**: 15 minutes
 
@@ -190,11 +190,11 @@ class FalAPIClient:
 ```
 
 **Success Criteria**:
-- [ ] Can load API key from config
-- [ ] Can make authenticated generation requests
-- [ ] Can discover models from `/v1/models` endpoint
-- [ ] Pagination support with cursor parameter
-- [ ] Proper error handling for HTTP errors
+- [x] Can load API key from config
+- [x] Can make authenticated generation requests
+- [x] Can discover models from `/v1/models` endpoint
+- [x] Pagination support with cursor parameter
+- [x] Proper error handling for HTTP errors
 
 **Estimated Time**: 45 minutes
 
@@ -319,11 +319,11 @@ class ModelDiscovery:
 ```
 
 **Success Criteria**:
-- [ ] Discovers all models via API with pagination
-- [ ] Caches results to `~/.config/fal-skill/cache/`
-- [ ] Cache expires after 24 hours
-- [ ] Category filtering works
-- [ ] Force refresh bypasses cache
+- [x] Discovers all models via API with pagination
+- [x] Caches results to `~/.config/fal-skill/cache/`
+- [x] Cache expires after 24 hours
+- [x] Category filtering works
+- [x] Force refresh bypasses cache
 
 **Estimated Time**: 45 minutes
 
@@ -411,11 +411,11 @@ class ModelRegistry:
 ```
 
 **Success Criteria**:
-- [ ] Loads curated models from YAML
-- [ ] Can query models by category
-- [ ] Prioritizes curated recommended models
-- [ ] Falls back to discovered models
-- [ ] Handles missing files gracefully
+- [x] Loads curated models from YAML
+- [x] Can query models by category
+- [x] Prioritizes curated recommended models
+- [x] Falls back to discovered models
+- [x] Handles missing files gracefully
 
 **Estimated Time**: 30 minutes
 
@@ -501,10 +501,10 @@ if __name__ == "__main__":
 ```
 
 **Success Criteria**:
-- [ ] Can run models via `fal_api.py run <endpoint> <json>`
-- [ ] Can discover models via `fal_api.py discover [category]`
-- [ ] Can refresh cache via `fal_api.py refresh`
-- [ ] Can validate API key via `fal_api.py validate`
+- [x] Can run models via `fal_api.py run <endpoint> <json>`
+- [x] Can discover models via `fal_api.py discover [category]`
+- [x] Can refresh cache via `fal_api.py refresh`
+- [x] Can validate API key via `fal_api.py validate`
 
 **Estimated Time**: 30 minutes
 
@@ -594,11 +594,11 @@ categories:
 ```
 
 **Success Criteria**:
-- [ ] YAML is valid and parseable
-- [ ] Contains 5 core models (3 image, 1 bg removal, 1 video)
-- [ ] Each model has required fields: endpoint_id, display_name, cost/speed/quality tiers
-- [ ] Recommended models marked
-- [ ] Parameter documentation included
+- [x] YAML is valid and parseable
+- [x] Contains 5 core models (3 image, 1 bg removal, 1 video)
+- [x] Each model has required fields: endpoint_id, display_name, cost/speed/quality tiers
+- [x] Recommended models marked
+- [x] Parameter documentation included
 
 **Estimated Time**: 30 minutes
 
@@ -788,12 +788,12 @@ When this skill is invoked:
 ```
 
 **Success Criteria**:
-- [ ] Clear step-by-step instructions for Claude Code
-- [ ] Validates API key before saving
-- [ ] Saves key securely with correct permissions
-- [ ] Tests model discovery
-- [ ] Provides helpful next steps
-- [ ] Error handling for common issues
+- [x] Clear step-by-step instructions for Claude Code
+- [x] Validates API key before saving
+- [x] Saves key securely with correct permissions
+- [x] Tests model discovery
+- [x] Provides helpful next steps
+- [x] Error handling for common issues
 
 **Estimated Time**: 45 minutes
 
@@ -966,20 +966,20 @@ cat /tmp/image_models.json | grep endpoint_id | wc -l  # Should be 150+
 
 ## Deliverables Checklist
 
-- [ ] Directory structure complete
-- [ ] `.gitignore` configured
-- [ ] `scripts/fal_api.py` CLI working
-- [ ] `scripts/lib/api_client.py` with generation + discovery
-- [ ] `scripts/lib/discovery.py` with caching
-- [ ] `scripts/lib/models.py` registry loader
-- [ ] `models/curated.yaml` with 5 core models
-- [ ] `config/response_patterns.yaml` template
-- [ ] `skills/fal-setup/SKILL.md` complete
-- [ ] `README.md` with quick start
-- [ ] API key validation working
-- [ ] Model discovery fetching 1000+ models
-- [ ] Cache persisting with 24h TTL
-- [ ] Fallback to curated models on API failure
+- [x] Directory structure complete
+- [x] `.gitignore` configured
+- [x] `scripts/fal_api.py` CLI working
+- [x] `scripts/lib/api_client.py` with generation + discovery
+- [x] `scripts/lib/discovery.py` with caching
+- [x] `scripts/lib/models.py` registry loader
+- [x] `models/curated.yaml` with 5 core models
+- [x] `config/response_patterns.yaml` template
+- [x] `skills/fal-setup/SKILL.md` complete
+- [x] `README.md` with quick start
+- [x] API key validation working
+- [x] Model discovery fetching 1117 models
+- [x] Cache persisting with 24h TTL
+- [x] Fallback to curated models on API failure
 
 ---
 

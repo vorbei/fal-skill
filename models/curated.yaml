@@ -1,0 +1,73 @@
+version: "1.0"
+last_updated: "2026-01-28"
+description: "Curated subset of tested, recommended fal.ai models"
+
+categories:
+  text-to-image:
+    - endpoint_id: fal-ai/flux/dev
+      display_name: FLUX.1 [dev]
+      description: "Fast text-to-image generation with good quality"
+      cost_tier: standard
+      speed_tier: medium
+      quality_tier: high
+      recommended: true
+      tested: true
+      params:
+        prompt: "string (required)"
+        image_size: "string (optional, default: landscape_4_3)"
+        num_inference_steps: "int (optional, default: 28)"
+        guidance_scale: "float (optional, default: 3.5)"
+        num_images: "int (optional, default: 1)"
+
+    - endpoint_id: fal-ai/z-image/base
+      display_name: z-image base
+      description: "Budget-friendly fast generation, lower quality"
+      cost_tier: budget
+      speed_tier: fast
+      quality_tier: medium
+      recommended: false
+      tested: true
+      params:
+        prompt: "string (required)"
+        negative_prompt: "string (optional)"
+
+    - endpoint_id: fal-ai/flux-pro
+      display_name: FLUX.1 [pro]
+      description: "Highest quality text-to-image, slower and more expensive"
+      cost_tier: premium
+      speed_tier: slow
+      quality_tier: highest
+      recommended: false
+      tested: true
+      params:
+        prompt: "string (required)"
+        image_size: "string (optional)"
+        num_inference_steps: "int (optional)"
+        guidance_scale: "float (optional)"
+
+  background-removal:
+    - endpoint_id: fal-ai/birefnet/v2
+      display_name: Birefnet v2
+      description: "High-quality background removal"
+      cost_tier: budget
+      speed_tier: fast
+      quality_tier: high
+      recommended: true
+      tested: true
+      params:
+        image_url: "string (required)"
+        model: "string (optional, default: General Use (Light))"
+
+  text-to-video:
+    - endpoint_id: fal-ai/kling-video/v1/standard/text-to-video
+      display_name: Kling Video v1 Standard
+      description: "Text-to-video generation, 5-10 second clips"
+      cost_tier: premium
+      speed_tier: slow
+      quality_tier: high
+      recommended: true
+      tested: false
+      params:
+        prompt: "string (required)"
+        duration: "number (optional, default: 5, max: 10)"
+        aspect_ratio: "string (optional, default: 16:9)"

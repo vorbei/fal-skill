@@ -1,0 +1,21 @@
+{
+  "flux_pro_success": {
+    "data": {
+      "images": [
+        {"url": "https://fal.media/files/test.png", "width": 1024, "height": 1024}
+      ]
+    }
+  },
+  "kling_video_success": {
+    "data": {
+      "video": {
+        "url": "https://fal.media/files/test.mp4"
+      }
+    }
+  },
+  "birefnet_success": {
+    "image": {
+      "url": "https://fal.media/files/transparent.png"
+    }
+  }
+}
