@@ -2,6 +2,9 @@ import os
 import json
 import time
 from typing import List, Dict, Any, Optional
+from .logging_config import setup_logging
+
+logger = setup_logging(__name__)
 
 class ModelDiscovery:
     """Model discovery with intelligent caching"""
@@ -25,7 +28,7 @@ class ModelDiscovery:
         all_models = []
         cursor = None
 
-        print("Discovering models from fal.ai API...")
+        logger.info("Discovering models from fal.ai API")
 
         while True:
             response = self.api_client.discover_models(
@@ -41,7 +44,7 @@ class ModelDiscovery:
 
             cursor = response.get("next_cursor")
 
-        print(f"Discovered {len(all_models)} models")
+        logger.info(f"Discovered {len(all_models)} models")
 
         # Save to cache
         self._save_cache(cache_file, all_models)

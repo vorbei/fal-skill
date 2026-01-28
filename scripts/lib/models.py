@@ -1,6 +1,9 @@
 import os
 import yaml
 from typing import Dict, List, Optional, Any
+from .logging_config import setup_logging
+
+logger = setup_logging(__name__)
 
 class ModelRegistry:
     """Model registry combining curated and discovered models"""
@@ -26,7 +29,7 @@ class ModelRegistry:
             curated_path = os.path.join(os.getcwd(), "models", "curated.yaml")
 
         if not os.path.exists(curated_path):
-            print(f"Warning: curated.yaml not found at {curated_path}")
+            logger.warning(f"curated.yaml not found at {curated_path}")
             return {"categories": {}}
 
         with open(curated_path, 'r') as f:
@@ -58,7 +61,7 @@ class ModelRegistry:
             if discovered:
                 return self._convert_discovered_to_model(discovered[0])
         except Exception as e:
-            print(f"Warning: Could not discover models for {category}: {e}")
+            logger.warning(f"Could not discover models for {category}: {e}")
 
         return None
 

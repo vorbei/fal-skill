@@ -6,6 +6,9 @@ import re
 import time
 from urllib.error import HTTPError, URLError
 from typing import Dict, Any, Optional
+from .logging_config import setup_logging
+
+logger = setup_logging(__name__)
 
 class FalAPIClient:
     """HTTP client for fal.ai API (generation + discovery)"""
@@ -58,7 +61,7 @@ class FalAPIClient:
 
                 # Exponential backoff: 1s, 2s, 4s
                 wait_time = 2 ** attempt
-                print(f"Request failed, retrying in {wait_time}s...")
+                logger.warning(f"Request failed, retrying in {wait_time}s...")
                 time.sleep(wait_time)
 
     def run_model(self, endpoint_id: str, input_data: Dict[str, Any]) -> Dict[str, Any]:
