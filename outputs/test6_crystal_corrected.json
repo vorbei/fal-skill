@@ -1,0 +1,3 @@
+INFO: Submitting request to clarityai/crystal-upscaler via queue system
+INFO: Request completed successfully
+{"url": "https://v3b.fal.media/files/b/0a8c36b2/PAKI55kpl8NCsi2q3DZ0Z_upscaled.jpg", "model": "clarityai/crystal-upscaler", "scale": 2, "type": "image"}

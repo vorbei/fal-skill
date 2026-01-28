@@ -1,0 +1,406 @@
+{
+  "openapi": "3.0.4",
+  "info": {
+    "title": "Queue OpenAPI for fal-ai/kling-video/v1/standard/text-to-video",
+    "version": "1.0.0",
+    "description": "The OpenAPI schema for the fal-ai/kling-video/v1/standard/text-to-video queue.",
+    "x-fal-metadata": {
+      "endpointId": "fal-ai/kling-video/v1/standard/text-to-video",
+      "category": "text-to-video",
+      "thumbnailUrl": "https://fal.media/files/monkey/GoSnDOnX0Tea08N7iI7oM.jpeg",
+      "playgroundUrl": "https://fal.ai/models/fal-ai/kling-video/v1/standard/text-to-video",
+      "documentationUrl": "https://fal.ai/models/fal-ai/kling-video/v1/standard/text-to-video/api"
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "apiKeyAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "Authorization",
+        "description": "Fal Key"
+      }
+    },
+    "schemas": {
+      "QueueStatus": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": [
+              "IN_QUEUE",
+              "IN_PROGRESS",
+              "COMPLETED"
+            ]
+          },
+          "request_id": {
+            "type": "string",
+            "description": "The request id."
+          },
+          "response_url": {
+            "type": "string",
+            "description": "The response url."
+          },
+          "status_url": {
+            "type": "string",
+            "description": "The status url."
+          },
+          "cancel_url": {
+            "type": "string",
+            "description": "The cancel url."
+          },
+          "logs": {
+            "type": "object",
+            "description": "The logs.",
+            "additionalProperties": true
+          },
+          "metrics": {
+            "type": "object",
+            "description": "The metrics.",
+            "additionalProperties": true
+          },
+          "queue_position": {
+            "type": "integer",
+            "description": "The queue position."
+          }
+        },
+        "required": [
+          "status",
+          "request_id"
+        ]
+      },
+      "KlingVideoV1StandardTextToVideoInput": {
+        "title": "V1TextToVideoRequest",
+        "type": "object",
+        "properties": {
+          "prompt": {
+            "examples": [
+              "A stylish woman walks down a Tokyo street filled with warm glowing neon and animated city signage. She wears a black leather jacket, a long red dress, and black boots, and carries a black purse."
+            ],
+            "title": "Prompt",
+            "type": "string",
+            "maxLength": 2500
+          },
+          "aspect_ratio": {
+            "enum": [
+              "16:9",
+              "9:16",
+              "1:1"
+            ],
+            "title": "Aspect Ratio",
+            "type": "string",
+            "description": "The aspect ratio of the generated video frame",
+            "default": "16:9"
+          },
+          "advanced_camera_control": {
+            "title": "Advanced Camera Control",
+            "description": "Advanced Camera control parameters",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/CameraControl"
+              }
+            ]
+          },
+          "cfg_scale": {
+            "minimum": 0,
+            "title": "Cfg Scale",
+            "type": "number",
+            "maximum": 1,
+            "description": "\n            The CFG (Classifier Free Guidance) scale is a measure of how close you want\n            the model to stick to your prompt.\n        ",
+            "default": 0.5
+          },
+          "duration": {
+            "enum": [
+              "5",
+              "10"
+            ],
+            "title": "Duration",
+            "type": "string",
+            "description": "The duration of the generated video in seconds",
+            "default": "5"
+          },
+          "negative_prompt": {
+            "title": "Negative Prompt",
+            "type": "string",
+            "maxLength": 2500,
+            "default": "blur, distort, and low quality"
+          },
+          "camera_control": {
+            "enum": [
+              "down_back",
+              "forward_up",
+              "right_turn_forward",
+              "left_turn_forward"
+            ],
+            "title": "Camera Control",
+            "type": "string",
+            "description": "Camera control parameters"
+          }
+        },
+        "x-fal-order-properties": [
+          "prompt",
+          "duration",
+          "aspect_ratio",
+          "negative_prompt",
+          "cfg_scale",
+          "camera_control",
+          "advanced_camera_control"
+        ],
+        "required": [
+          "prompt"
+        ]
+      },
+      "KlingVideoV1StandardTextToVideoOutput": {
+        "title": "T2VOutput",
+        "type": "object",
+        "properties": {
+          "video": {
+            "examples": [
+              {
+                "url": "https://v2.fal.media/files/fb33a862b94d4d7195e610e4cbc5d392_output.mp4"
+              }
+            ],
+            "title": "Video",
+            "description": "The generated video",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/File"
+              }
+            ]
+          }
+        },
+        "x-fal-order-properties": [
+          "video"
+        ],
+        "required": [
+          "video"
+        ]
+      },
+      "CameraControl": {
+        "title": "CameraControl",
+        "type": "object",
+        "properties": {
+          "movement_type": {
+            "enum": [
+              "horizontal",
+              "vertical",
+              "pan",
+              "tilt",
+              "roll",
+              "zoom"
+            ],
+            "title": "Movement Type",
+            "type": "string",
+            "examples": [
+              "horizontal"
+            ],
+            "description": "The type of camera movement"
+          },
+          "movement_value": {
+            "minimum": -10,
+            "title": "Movement Value",
+            "type": "integer",
+            "examples": [
+              10
+            ],
+            "description": "The value of the camera movement",
+            "maximum": 10
+          }
+        },
+        "x-fal-order-properties": [
+          "movement_type",
+          "movement_value"
+        ],
+        "required": [
+          "movement_type",
+          "movement_value"
+        ]
+      },
+      "File": {
+        "title": "File",
+        "type": "object",
+        "properties": {
+          "file_size": {
+            "examples": [
+              4404019
+            ],
+            "title": "File Size",
+            "type": "integer",
+            "description": "The size of the file in bytes."
+          },
+          "file_name": {
+            "examples": [
+              "z9RV14K95DvU.png"
+            ],
+            "title": "File Name",
+            "type": "string",
+            "description": "The name of the file. It will be auto-generated if not provided."
+          },
+          "content_type": {
+            "examples": [
+              "image/png"
+            ],
+            "title": "Content Type",
+            "type": "string",
+            "description": "The mime type of the file."
+          },
+          "url": {
+            "title": "Url",
+            "type": "string",
+            "description": "The URL where the file can be downloaded from."
+          },
+          "file_data": {
+            "format": "binary",
+            "title": "File Data",
+            "type": "string",
+            "description": "File data"
+          }
+        },
+        "x-fal-order-properties": [
+          "url",
+          "content_type",
+          "file_name",
+          "file_size",
+          "file_data"
+        ],
+        "required": [
+          "url"
+        ]
+      }
+    }
+  },
+  "paths": {
+    "/fal-ai/kling-video/v1/standard/text-to-video/requests/{request_id}/status": {
+      "get": {
+        "parameters": [
+          {
+            "name": "request_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Request ID"
+            }
+          },
+          {
+            "name": "logs",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "number",
+              "description": "Whether to include logs (`1`) in the response or not (`0`)."
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request status.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/QueueStatus"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/fal-ai/kling-video/v1/standard/text-to-video/requests/{request_id}/cancel": {
+      "put": {
+        "parameters": [
+          {
+            "name": "request_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Request ID"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request was cancelled.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "description": "Whether the request was cancelled successfully."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/fal-ai/kling-video/v1/standard/text-to-video": {
+      "post": {
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/KlingVideoV1StandardTextToVideoInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "The request status.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/QueueStatus"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/fal-ai/kling-video/v1/standard/text-to-video/requests/{request_id}": {
+      "get": {
+        "parameters": [
+          {
+            "name": "request_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Request ID"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result of the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/KlingVideoV1StandardTextToVideoOutput"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "servers": [
+    {
+      "url": "https://queue.fal.run"
+    }
+  ],
+  "security": [
+    {
+      "apiKeyAuth": []
+    }
+  ]
+}

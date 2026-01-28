@@ -1,0 +1,81 @@
+{
+  "success": [
+    {
+      "endpoint_id": "fal-ai/flux/dev",
+      "category": "text-to-image",
+      "display_name": "FLUX.1 [dev]"
+    },
+    {
+      "endpoint_id": "fal-ai/z-image/base",
+      "category": "text-to-image",
+      "display_name": "z-image base"
+    },
+    {
+      "endpoint_id": "fal-ai/flux-pro",
+      "category": "text-to-image",
+      "display_name": "FLUX.1 [pro]"
+    },
+    {
+      "endpoint_id": "fal-ai/birefnet/v2",
+      "category": "background-removal",
+      "display_name": "Birefnet v2"
+    },
+    {
+      "endpoint_id": "fal-ai/kling-video/v1/standard/text-to-video",
+      "category": "text-to-video",
+      "display_name": "Kling Video v1 Standard"
+    },
+    {
+      "endpoint_id": "fal-ai/kling-video/v1/standard/image-to-video",
+      "category": "image-to-video",
+      "display_name": "Kling Video v1 Standard (Image-to-Video)"
+    },
+    {
+      "endpoint_id": "bria/fibo-edit/colorize",
+      "category": "image-editing",
+      "display_name": "Fibo Edit - Colorize"
+    },
+    {
+      "endpoint_id": "bria/fibo-edit/relight",
+      "category": "image-editing",
+      "display_name": "Fibo Edit - Relight"
+    },
+    {
+      "endpoint_id": "bria/fibo-edit/reseason",
+      "category": "image-editing",
+      "display_name": "Fibo Edit - Reseason"
+    },
+    {
+      "endpoint_id": "bria/fibo-edit/restore",
+      "category": "image-editing",
+      "display_name": "Fibo Edit - Restore"
+    },
+    {
+      "endpoint_id": "bria/fibo-edit/restyle",
+      "category": "image-editing",
+      "display_name": "Fibo Edit - Restyle"
+    },
+    {
+      "endpoint_id": "clarityai/crystal-upscaler",
+      "category": "upscale",
+      "display_name": "Crystal Upscaler"
+    },
+    {
+      "endpoint_id": "fal-ai/clarity-upscaler",
+      "category": "upscale",
+      "display_name": "Clarity Upscaler"
+    }
+  ],
+  "failed": [
+    {
+      "endpoint_id": "fal-ai/kling-video/v1/pro/text-to-video",
+      "category": "text-to-video",
+      "display_name": "Kling Video v1 Pro"
+    },
+    {
+      "endpoint_id": "fal-ai/kling-video/v1/pro/image-to-video",
+      "category": "image-to-video",
+      "display_name": "Kling Video v1 Pro (Image-to-Video)"
+    }
+  ]
+}

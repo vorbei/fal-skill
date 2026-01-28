@@ -1,0 +1,1005 @@
+INFO: Submitting request to bria/fibo-edit/restore via queue system
+INFO: Progress: 
+INFO: Progress:   0%|          | 0/50 [00:00<?, ?it/s]
+INFO: Progress: 
+INFO: Progress:   2%|▏         | 1/50 [00:00<00:21,  2.24it/s]
+INFO: Progress: 
+INFO: Progress:   6%|▌         | 3/50 [00:00<00:13,  3.48it/s]
+INFO: Progress: 
+INFO: Progress:   0%|          | 0/50 [00:00<?, ?it/s]
+INFO: Progress: 
+INFO: Progress:   2%|▏         | 1/50 [00:00<00:21,  2.24it/s]
+INFO: Progress: 
+INFO: Progress:   6%|▌         | 3/50 [00:00<00:13,  3.48it/s]
+INFO: Progress: 
+INFO: Progress:   8%|▊         | 4/50 [00:01<00:15,  2.88it/s]
+INFO: Progress: 
+INFO: Progress:  10%|█         | 5/50 [00:01<00:17,  2.61it/s]
+INFO: Progress: 
+INFO: Progress:  12%|█▏        | 6/50 [00:02<00:18,  2.44it/s]
+INFO: Progress: 
+INFO: Progress:   0%|          | 0/50 [00:00<?, ?it/s]
+INFO: Progress: 
+INFO: Progress:   2%|▏         | 1/50 [00:00<00:21,  2.24it/s]
+INFO: Progress: 
+INFO: Progress:   6%|▌         | 3/50 [00:00<00:13,  3.48it/s]
+INFO: Progress: 
+INFO: Progress:   8%|▊         | 4/50 [00:01<00:15,  2.88it/s]
+INFO: Progress: 
+INFO: Progress:  10%|█         | 5/50 [00:01<00:17,  2.61it/s]
+INFO: Progress: 
+INFO: Progress:  12%|█▏        | 6/50 [00:02<00:18,  2.44it/s]
+INFO: Progress: 
+INFO: Progress:  14%|█▍        | 7/50 [00:02<00:18,  2.35it/s]
+INFO: Progress: 
+INFO: Progress:  16%|█▌        | 8/50 [00:03<00:18,  2.29it/s]
+INFO: Progress: 
+INFO: Progress:  18%|█▊        | 9/50 [00:03<00:18,  2.26it/s]
+INFO: Progress: 
+INFO: Progress:   0%|          | 0/50 [00:00<?, ?it/s]
+INFO: Progress: 
+INFO: Progress:   2%|▏         | 1/50 [00:00<00:21,  2.24it/s]
+INFO: Progress: 
+INFO: Progress:   6%|▌         | 3/50 [00:00<00:13,  3.48it/s]
+INFO: Progress: 
+INFO: Progress:   8%|▊         | 4/50 [00:01<00:15,  2.88it/s]
+INFO: Progress: 
+INFO: Progress:  10%|█         | 5/50 [00:01<00:17,  2.61it/s]
+INFO: Progress: 
+INFO: Progress:  12%|█▏        | 6/50 [00:02<00:18,  2.44it/s]
+INFO: Progress: 
+INFO: Progress:  14%|█▍        | 7/50 [00:02<00:18,  2.35it/s]
+INFO: Progress: 
+INFO: Progress:  16%|█▌        | 8/50 [00:03<00:18,  2.29it/s]
+INFO: Progress: 
+INFO: Progress:  18%|█▊        | 9/50 [00:03<00:18,  2.26it/s]
+INFO: Progress: 
+INFO: Progress:  20%|██        | 10/50 [00:04<00:18,  2.22it/s]
+INFO: Progress: 
+INFO: Progress:  22%|██▏       | 11/50 [00:04<00:17,  2.21it/s]
+INFO: Progress: 
+INFO: Progress:  24%|██▍       | 12/50 [00:05<00:17,  2.18it/s]
+INFO: Progress: 
+INFO: Progress:  26%|██▌       | 13/50 [00:05<00:17,  2.17it/s]
+INFO: Progress: 
+INFO: Progress:   0%|          | 0/50 [00:00<?, ?it/s]
+INFO: Progress: 
+INFO: Progress:   2%|▏         | 1/50 [00:00<00:21,  2.24it/s]
+INFO: Progress: 
+INFO: Progress:   6%|▌         | 3/50 [00:00<00:13,  3.48it/s]
+INFO: Progress: 
+INFO: Progress:   8%|▊         | 4/50 [00:01<00:15,  2.88it/s]
+INFO: Progress: 
+INFO: Progress:  10%|█         | 5/50 [00:01<00:17,  2.61it/s]
+INFO: Progress: 
+INFO: Progress:  12%|█▏        | 6/50 [00:02<00:18,  2.44it/s]
+INFO: Progress: 
+INFO: Progress:  14%|█▍        | 7/50 [00:02<00:18,  2.35it/s]
+INFO: Progress: 
+INFO: Progress:  16%|█▌        | 8/50 [00:03<00:18,  2.29it/s]
+INFO: Progress: 
+INFO: Progress:  18%|█▊        | 9/50 [00:03<00:18,  2.26it/s]
+INFO: Progress: 
+INFO: Progress:  20%|██        | 10/50 [00:04<00:18,  2.22it/s]
+INFO: Progress: 
+INFO: Progress:  22%|██▏       | 11/50 [00:04<00:17,  2.21it/s]
+INFO: Progress: 
+INFO: Progress:  24%|██▍       | 12/50 [00:05<00:17,  2.18it/s]
+INFO: Progress: 
+INFO: Progress:  26%|██▌       | 13/50 [00:05<00:17,  2.17it/s]
+INFO: Progress: 
+INFO: Progress:   0%|          | 0/50 [00:00<?, ?it/s]
+INFO: Progress: 
+INFO: Progress:   2%|▏         | 1/50 [00:00<00:21,  2.24it/s]
+INFO: Progress: 
+INFO: Progress:   6%|▌         | 3/50 [00:00<00:13,  3.48it/s]
+INFO: Progress: 
+INFO: Progress:   8%|▊         | 4/50 [00:01<00:15,  2.88it/s]
+INFO: Progress: 
+INFO: Progress:  10%|█         | 5/50 [00:01<00:17,  2.61it/s]
+INFO: Progress: 
+INFO: Progress:  12%|█▏        | 6/50 [00:02<00:18,  2.44it/s]
+INFO: Progress: 
+INFO: Progress:  14%|█▍        | 7/50 [00:02<00:18,  2.35it/s]
+INFO: Progress: 
+INFO: Progress:  16%|█▌        | 8/50 [00:03<00:18,  2.29it/s]
+INFO: Progress: 
+INFO: Progress:  18%|█▊        | 9/50 [00:03<00:18,  2.26it/s]
+INFO: Progress: 
+INFO: Progress:  20%|██        | 10/50 [00:04<00:18,  2.22it/s]
+INFO: Progress: 
+INFO: Progress:  22%|██▏       | 11/50 [00:04<00:17,  2.21it/s]
+INFO: Progress: 
+INFO: Progress:  24%|██▍       | 12/50 [00:05<00:17,  2.18it/s]
+INFO: Progress: 
+INFO: Progress:  26%|██▌       | 13/50 [00:05<00:17,  2.17it/s]
+INFO: Progress: 
+INFO: Progress:  28%|██▊       | 14/50 [00:05<00:16,  2.17it/s]
+INFO: Progress: 
+INFO: Progress:  30%|███       | 15/50 [00:06<00:16,  2.17it/s]
+INFO: Progress: 
+INFO: Progress:  32%|███▏      | 16/50 [00:06<00:15,  2.16it/s]
+INFO: Progress: 
+INFO: Progress:   0%|          | 0/50 [00:00<?, ?it/s]
+INFO: Progress: 
+INFO: Progress:   2%|▏         | 1/50 [00:00<00:21,  2.24it/s]
+INFO: Progress: 
+INFO: Progress:   6%|▌         | 3/50 [00:00<00:13,  3.48it/s]
+INFO: Progress: 
+INFO: Progress:   8%|▊         | 4/50 [00:01<00:15,  2.88it/s]
+INFO: Progress: 
+INFO: Progress:  10%|█         | 5/50 [00:01<00:17,  2.61it/s]
+INFO: Progress: 
+INFO: Progress:  12%|█▏        | 6/50 [00:02<00:18,  2.44it/s]
+INFO: Progress: 
+INFO: Progress:  14%|█▍        | 7/50 [00:02<00:18,  2.35it/s]
+INFO: Progress: 
+INFO: Progress:  16%|█▌        | 8/50 [00:03<00:18,  2.29it/s]
+INFO: Progress: 
+INFO: Progress:  18%|█▊        | 9/50 [00:03<00:18,  2.26it/s]
+INFO: Progress: 
+INFO: Progress:  20%|██        | 10/50 [00:04<00:18,  2.22it/s]
+INFO: Progress: 
+INFO: Progress:  22%|██▏       | 11/50 [00:04<00:17,  2.21it/s]
+INFO: Progress: 
+INFO: Progress:  24%|██▍       | 12/50 [00:05<00:17,  2.18it/s]
+INFO: Progress: 
+INFO: Progress:  26%|██▌       | 13/50 [00:05<00:17,  2.17it/s]
+INFO: Progress: 
+INFO: Progress:  28%|██▊       | 14/50 [00:05<00:16,  2.17it/s]
+INFO: Progress: 
+INFO: Progress:  30%|███       | 15/50 [00:06<00:16,  2.17it/s]
+INFO: Progress: 
+INFO: Progress:  32%|███▏      | 16/50 [00:06<00:15,  2.16it/s]
+INFO: Progress: 
+INFO: Progress:   0%|          | 0/50 [00:00<?, ?it/s]
+INFO: Progress: 
+INFO: Progress:   2%|▏         | 1/50 [00:00<00:21,  2.24it/s]
+INFO: Progress: 
+INFO: Progress:   6%|▌         | 3/50 [00:00<00:13,  3.48it/s]
+INFO: Progress: 
+INFO: Progress:   8%|▊         | 4/50 [00:01<00:15,  2.88it/s]
+INFO: Progress: 
+INFO: Progress:  10%|█         | 5/50 [00:01<00:17,  2.61it/s]
+INFO: Progress: 
+INFO: Progress:  12%|█▏        | 6/50 [00:02<00:18,  2.44it/s]
+INFO: Progress: 
+INFO: Progress:  14%|█▍        | 7/50 [00:02<00:18,  2.35it/s]
+INFO: Progress: 
+INFO: Progress:  16%|█▌        | 8/50 [00:03<00:18,  2.29it/s]
+INFO: Progress: 
+INFO: Progress:  18%|█▊        | 9/50 [00:03<00:18,  2.26it/s]
+INFO: Progress: 
+INFO: Progress:  20%|██        | 10/50 [00:04<00:18,  2.22it/s]
+INFO: Progress: 
+INFO: Progress:  22%|██▏       | 11/50 [00:04<00:17,  2.21it/s]
+INFO: Progress: 
+INFO: Progress:  24%|██▍       | 12/50 [00:05<00:17,  2.18it/s]
+INFO: Progress: 
+INFO: Progress:  26%|██▌       | 13/50 [00:05<00:17,  2.17it/s]
+INFO: Progress: 
+INFO: Progress:  28%|██▊       | 14/50 [00:05<00:16,  2.17it/s]
+INFO: Progress: 
+INFO: Progress:  30%|███       | 15/50 [00:06<00:16,  2.17it/s]
+INFO: Progress: 
+INFO: Progress:  32%|███▏      | 16/50 [00:06<00:15,  2.16it/s]
+INFO: Progress: 
+INFO: Progress:  34%|███▍      | 17/50 [00:07<00:15,  2.16it/s]
+INFO: Progress: 
+INFO: Progress:  36%|███▌      | 18/50 [00:07<00:14,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  38%|███▊      | 19/50 [00:08<00:14,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  40%|████      | 20/50 [00:08<00:13,  2.16it/s]
+INFO: Progress: 
+INFO: Progress:   0%|          | 0/50 [00:00<?, ?it/s]
+INFO: Progress: 
+INFO: Progress:   2%|▏         | 1/50 [00:00<00:21,  2.24it/s]
+INFO: Progress: 
+INFO: Progress:   6%|▌         | 3/50 [00:00<00:13,  3.48it/s]
+INFO: Progress: 
+INFO: Progress:   8%|▊         | 4/50 [00:01<00:15,  2.88it/s]
+INFO: Progress: 
+INFO: Progress:  10%|█         | 5/50 [00:01<00:17,  2.61it/s]
+INFO: Progress: 
+INFO: Progress:  12%|█▏        | 6/50 [00:02<00:18,  2.44it/s]
+INFO: Progress: 
+INFO: Progress:  14%|█▍        | 7/50 [00:02<00:18,  2.35it/s]
+INFO: Progress: 
+INFO: Progress:  16%|█▌        | 8/50 [00:03<00:18,  2.29it/s]
+INFO: Progress: 
+INFO: Progress:  18%|█▊        | 9/50 [00:03<00:18,  2.26it/s]
+INFO: Progress: 
+INFO: Progress:  20%|██        | 10/50 [00:04<00:18,  2.22it/s]
+INFO: Progress: 
+INFO: Progress:  22%|██▏       | 11/50 [00:04<00:17,  2.21it/s]
+INFO: Progress: 
+INFO: Progress:  24%|██▍       | 12/50 [00:05<00:17,  2.18it/s]
+INFO: Progress: 
+INFO: Progress:  26%|██▌       | 13/50 [00:05<00:17,  2.17it/s]
+INFO: Progress: 
+INFO: Progress:  28%|██▊       | 14/50 [00:05<00:16,  2.17it/s]
+INFO: Progress: 
+INFO: Progress:  30%|███       | 15/50 [00:06<00:16,  2.17it/s]
+INFO: Progress: 
+INFO: Progress:  32%|███▏      | 16/50 [00:06<00:15,  2.16it/s]
+INFO: Progress: 
+INFO: Progress:  34%|███▍      | 17/50 [00:07<00:15,  2.16it/s]
+INFO: Progress: 
+INFO: Progress:  36%|███▌      | 18/50 [00:07<00:14,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  38%|███▊      | 19/50 [00:08<00:14,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  40%|████      | 20/50 [00:08<00:13,  2.16it/s]
+INFO: Progress: 
+INFO: Progress:  42%|████▏     | 21/50 [00:09<00:13,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  44%|████▍     | 22/50 [00:09<00:12,  2.16it/s]
+INFO: Progress: 
+INFO: Progress:  46%|████▌     | 23/50 [00:10<00:12,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:   0%|          | 0/50 [00:00<?, ?it/s]
+INFO: Progress: 
+INFO: Progress:   2%|▏         | 1/50 [00:00<00:21,  2.24it/s]
+INFO: Progress: 
+INFO: Progress:   6%|▌         | 3/50 [00:00<00:13,  3.48it/s]
+INFO: Progress: 
+INFO: Progress:   8%|▊         | 4/50 [00:01<00:15,  2.88it/s]
+INFO: Progress: 
+INFO: Progress:  10%|█         | 5/50 [00:01<00:17,  2.61it/s]
+INFO: Progress: 
+INFO: Progress:  12%|█▏        | 6/50 [00:02<00:18,  2.44it/s]
+INFO: Progress: 
+INFO: Progress:  14%|█▍        | 7/50 [00:02<00:18,  2.35it/s]
+INFO: Progress: 
+INFO: Progress:  16%|█▌        | 8/50 [00:03<00:18,  2.29it/s]
+INFO: Progress: 
+INFO: Progress:  18%|█▊        | 9/50 [00:03<00:18,  2.26it/s]
+INFO: Progress: 
+INFO: Progress:  20%|██        | 10/50 [00:04<00:18,  2.22it/s]
+INFO: Progress: 
+INFO: Progress:  22%|██▏       | 11/50 [00:04<00:17,  2.21it/s]
+INFO: Progress: 
+INFO: Progress:  24%|██▍       | 12/50 [00:05<00:17,  2.18it/s]
+INFO: Progress: 
+INFO: Progress:  26%|██▌       | 13/50 [00:05<00:17,  2.17it/s]
+INFO: Progress: 
+INFO: Progress:  28%|██▊       | 14/50 [00:05<00:16,  2.17it/s]
+INFO: Progress: 
+INFO: Progress:  30%|███       | 15/50 [00:06<00:16,  2.17it/s]
+INFO: Progress: 
+INFO: Progress:  32%|███▏      | 16/50 [00:06<00:15,  2.16it/s]
+INFO: Progress: 
+INFO: Progress:  34%|███▍      | 17/50 [00:07<00:15,  2.16it/s]
+INFO: Progress: 
+INFO: Progress:  36%|███▌      | 18/50 [00:07<00:14,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  38%|███▊      | 19/50 [00:08<00:14,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  40%|████      | 20/50 [00:08<00:13,  2.16it/s]
+INFO: Progress: 
+INFO: Progress:  42%|████▏     | 21/50 [00:09<00:13,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  44%|████▍     | 22/50 [00:09<00:12,  2.16it/s]
+INFO: Progress: 
+INFO: Progress:  46%|████▌     | 23/50 [00:10<00:12,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:   0%|          | 0/50 [00:00<?, ?it/s]
+INFO: Progress: 
+INFO: Progress:   2%|▏         | 1/50 [00:00<00:21,  2.24it/s]
+INFO: Progress: 
+INFO: Progress:   6%|▌         | 3/50 [00:00<00:13,  3.48it/s]
+INFO: Progress: 
+INFO: Progress:   8%|▊         | 4/50 [00:01<00:15,  2.88it/s]
+INFO: Progress: 
+INFO: Progress:  10%|█         | 5/50 [00:01<00:17,  2.61it/s]
+INFO: Progress: 
+INFO: Progress:  12%|█▏        | 6/50 [00:02<00:18,  2.44it/s]
+INFO: Progress: 
+INFO: Progress:  14%|█▍        | 7/50 [00:02<00:18,  2.35it/s]
+INFO: Progress: 
+INFO: Progress:  16%|█▌        | 8/50 [00:03<00:18,  2.29it/s]
+INFO: Progress: 
+INFO: Progress:  18%|█▊        | 9/50 [00:03<00:18,  2.26it/s]
+INFO: Progress: 
+INFO: Progress:  20%|██        | 10/50 [00:04<00:18,  2.22it/s]
+INFO: Progress: 
+INFO: Progress:  22%|██▏       | 11/50 [00:04<00:17,  2.21it/s]
+INFO: Progress: 
+INFO: Progress:  24%|██▍       | 12/50 [00:05<00:17,  2.18it/s]
+INFO: Progress: 
+INFO: Progress:  26%|██▌       | 13/50 [00:05<00:17,  2.17it/s]
+INFO: Progress: 
+INFO: Progress:  28%|██▊       | 14/50 [00:05<00:16,  2.17it/s]
+INFO: Progress: 
+INFO: Progress:  30%|███       | 15/50 [00:06<00:16,  2.17it/s]
+INFO: Progress: 
+INFO: Progress:  32%|███▏      | 16/50 [00:06<00:15,  2.16it/s]
+INFO: Progress: 
+INFO: Progress:  34%|███▍      | 17/50 [00:07<00:15,  2.16it/s]
+INFO: Progress: 
+INFO: Progress:  36%|███▌      | 18/50 [00:07<00:14,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  38%|███▊      | 19/50 [00:08<00:14,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  40%|████      | 20/50 [00:08<00:13,  2.16it/s]
+INFO: Progress: 
+INFO: Progress:  42%|████▏     | 21/50 [00:09<00:13,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  44%|████▍     | 22/50 [00:09<00:12,  2.16it/s]
+INFO: Progress: 
+INFO: Progress:  46%|████▌     | 23/50 [00:10<00:12,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  48%|████▊     | 24/50 [00:10<00:12,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  50%|█████     | 25/50 [00:11<00:11,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  52%|█████▏    | 26/50 [00:11<00:11,  2.16it/s]
+INFO: Progress: 
+INFO: Progress:  54%|█████▍    | 27/50 [00:12<00:10,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:   0%|          | 0/50 [00:00<?, ?it/s]
+INFO: Progress: 
+INFO: Progress:   2%|▏         | 1/50 [00:00<00:21,  2.24it/s]
+INFO: Progress: 
+INFO: Progress:   6%|▌         | 3/50 [00:00<00:13,  3.48it/s]
+INFO: Progress: 
+INFO: Progress:   8%|▊         | 4/50 [00:01<00:15,  2.88it/s]
+INFO: Progress: 
+INFO: Progress:  10%|█         | 5/50 [00:01<00:17,  2.61it/s]
+INFO: Progress: 
+INFO: Progress:  12%|█▏        | 6/50 [00:02<00:18,  2.44it/s]
+INFO: Progress: 
+INFO: Progress:  14%|█▍        | 7/50 [00:02<00:18,  2.35it/s]
+INFO: Progress: 
+INFO: Progress:  16%|█▌        | 8/50 [00:03<00:18,  2.29it/s]
+INFO: Progress: 
+INFO: Progress:  18%|█▊        | 9/50 [00:03<00:18,  2.26it/s]
+INFO: Progress: 
+INFO: Progress:  20%|██        | 10/50 [00:04<00:18,  2.22it/s]
+INFO: Progress: 
+INFO: Progress:  22%|██▏       | 11/50 [00:04<00:17,  2.21it/s]
+INFO: Progress: 
+INFO: Progress:  24%|██▍       | 12/50 [00:05<00:17,  2.18it/s]
+INFO: Progress: 
+INFO: Progress:  26%|██▌       | 13/50 [00:05<00:17,  2.17it/s]
+INFO: Progress: 
+INFO: Progress:  28%|██▊       | 14/50 [00:05<00:16,  2.17it/s]
+INFO: Progress: 
+INFO: Progress:  30%|███       | 15/50 [00:06<00:16,  2.17it/s]
+INFO: Progress: 
+INFO: Progress:  32%|███▏      | 16/50 [00:06<00:15,  2.16it/s]
+INFO: Progress: 
+INFO: Progress:  34%|███▍      | 17/50 [00:07<00:15,  2.16it/s]
+INFO: Progress: 
+INFO: Progress:  36%|███▌      | 18/50 [00:07<00:14,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  38%|███▊      | 19/50 [00:08<00:14,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  40%|████      | 20/50 [00:08<00:13,  2.16it/s]
+INFO: Progress: 
+INFO: Progress:  42%|████▏     | 21/50 [00:09<00:13,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  44%|████▍     | 22/50 [00:09<00:12,  2.16it/s]
+INFO: Progress: 
+INFO: Progress:  46%|████▌     | 23/50 [00:10<00:12,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  48%|████▊     | 24/50 [00:10<00:12,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  50%|█████     | 25/50 [00:11<00:11,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  52%|█████▏    | 26/50 [00:11<00:11,  2.16it/s]
+INFO: Progress: 
+INFO: Progress:  54%|█████▍    | 27/50 [00:12<00:10,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  56%|█████▌    | 28/50 [00:12<00:10,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  58%|█████▊    | 29/50 [00:12<00:09,  2.16it/s]
+INFO: Progress: 
+INFO: Progress:  60%|██████    | 30/50 [00:13<00:09,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:   0%|          | 0/50 [00:00<?, ?it/s]
+INFO: Progress: 
+INFO: Progress:   2%|▏         | 1/50 [00:00<00:21,  2.24it/s]
+INFO: Progress: 
+INFO: Progress:   6%|▌         | 3/50 [00:00<00:13,  3.48it/s]
+INFO: Progress: 
+INFO: Progress:   8%|▊         | 4/50 [00:01<00:15,  2.88it/s]
+INFO: Progress: 
+INFO: Progress:  10%|█         | 5/50 [00:01<00:17,  2.61it/s]
+INFO: Progress: 
+INFO: Progress:  12%|█▏        | 6/50 [00:02<00:18,  2.44it/s]
+INFO: Progress: 
+INFO: Progress:  14%|█▍        | 7/50 [00:02<00:18,  2.35it/s]
+INFO: Progress: 
+INFO: Progress:  16%|█▌        | 8/50 [00:03<00:18,  2.29it/s]
+INFO: Progress: 
+INFO: Progress:  18%|█▊        | 9/50 [00:03<00:18,  2.26it/s]
+INFO: Progress: 
+INFO: Progress:  20%|██        | 10/50 [00:04<00:18,  2.22it/s]
+INFO: Progress: 
+INFO: Progress:  22%|██▏       | 11/50 [00:04<00:17,  2.21it/s]
+INFO: Progress: 
+INFO: Progress:  24%|██▍       | 12/50 [00:05<00:17,  2.18it/s]
+INFO: Progress: 
+INFO: Progress:  26%|██▌       | 13/50 [00:05<00:17,  2.17it/s]
+INFO: Progress: 
+INFO: Progress:  28%|██▊       | 14/50 [00:05<00:16,  2.17it/s]
+INFO: Progress: 
+INFO: Progress:  30%|███       | 15/50 [00:06<00:16,  2.17it/s]
+INFO: Progress: 
+INFO: Progress:  32%|███▏      | 16/50 [00:06<00:15,  2.16it/s]
+INFO: Progress: 
+INFO: Progress:  34%|███▍      | 17/50 [00:07<00:15,  2.16it/s]
+INFO: Progress: 
+INFO: Progress:  36%|███▌      | 18/50 [00:07<00:14,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  38%|███▊      | 19/50 [00:08<00:14,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  40%|████      | 20/50 [00:08<00:13,  2.16it/s]
+INFO: Progress: 
+INFO: Progress:  42%|████▏     | 21/50 [00:09<00:13,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  44%|████▍     | 22/50 [00:09<00:12,  2.16it/s]
+INFO: Progress: 
+INFO: Progress:  46%|████▌     | 23/50 [00:10<00:12,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  48%|████▊     | 24/50 [00:10<00:12,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  50%|█████     | 25/50 [00:11<00:11,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  52%|█████▏    | 26/50 [00:11<00:11,  2.16it/s]
+INFO: Progress: 
+INFO: Progress:  54%|█████▍    | 27/50 [00:12<00:10,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  56%|█████▌    | 28/50 [00:12<00:10,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  58%|█████▊    | 29/50 [00:12<00:09,  2.16it/s]
+INFO: Progress: 
+INFO: Progress:  60%|██████    | 30/50 [00:13<00:09,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  62%|██████▏   | 31/50 [00:13<00:08,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  64%|██████▍   | 32/50 [00:14<00:08,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  66%|██████▌   | 33/50 [00:14<00:07,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  68%|██████▊   | 34/50 [00:15<00:07,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:   0%|          | 0/50 [00:00<?, ?it/s]
+INFO: Progress: 
+INFO: Progress:   2%|▏         | 1/50 [00:00<00:21,  2.24it/s]
+INFO: Progress: 
+INFO: Progress:   6%|▌         | 3/50 [00:00<00:13,  3.48it/s]
+INFO: Progress: 
+INFO: Progress:   8%|▊         | 4/50 [00:01<00:15,  2.88it/s]
+INFO: Progress: 
+INFO: Progress:  10%|█         | 5/50 [00:01<00:17,  2.61it/s]
+INFO: Progress: 
+INFO: Progress:  12%|█▏        | 6/50 [00:02<00:18,  2.44it/s]
+INFO: Progress: 
+INFO: Progress:  14%|█▍        | 7/50 [00:02<00:18,  2.35it/s]
+INFO: Progress: 
+INFO: Progress:  16%|█▌        | 8/50 [00:03<00:18,  2.29it/s]
+INFO: Progress: 
+INFO: Progress:  18%|█▊        | 9/50 [00:03<00:18,  2.26it/s]
+INFO: Progress: 
+INFO: Progress:  20%|██        | 10/50 [00:04<00:18,  2.22it/s]
+INFO: Progress: 
+INFO: Progress:  22%|██▏       | 11/50 [00:04<00:17,  2.21it/s]
+INFO: Progress: 
+INFO: Progress:  24%|██▍       | 12/50 [00:05<00:17,  2.18it/s]
+INFO: Progress: 
+INFO: Progress:  26%|██▌       | 13/50 [00:05<00:17,  2.17it/s]
+INFO: Progress: 
+INFO: Progress:  28%|██▊       | 14/50 [00:05<00:16,  2.17it/s]
+INFO: Progress: 
+INFO: Progress:  30%|███       | 15/50 [00:06<00:16,  2.17it/s]
+INFO: Progress: 
+INFO: Progress:  32%|███▏      | 16/50 [00:06<00:15,  2.16it/s]
+INFO: Progress: 
+INFO: Progress:  34%|███▍      | 17/50 [00:07<00:15,  2.16it/s]
+INFO: Progress: 
+INFO: Progress:  36%|███▌      | 18/50 [00:07<00:14,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  38%|███▊      | 19/50 [00:08<00:14,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  40%|████      | 20/50 [00:08<00:13,  2.16it/s]
+INFO: Progress: 
+INFO: Progress:  42%|████▏     | 21/50 [00:09<00:13,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  44%|████▍     | 22/50 [00:09<00:12,  2.16it/s]
+INFO: Progress: 
+INFO: Progress:  46%|████▌     | 23/50 [00:10<00:12,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  48%|████▊     | 24/50 [00:10<00:12,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  50%|█████     | 25/50 [00:11<00:11,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  52%|█████▏    | 26/50 [00:11<00:11,  2.16it/s]
+INFO: Progress: 
+INFO: Progress:  54%|█████▍    | 27/50 [00:12<00:10,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  56%|█████▌    | 28/50 [00:12<00:10,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  58%|█████▊    | 29/50 [00:12<00:09,  2.16it/s]
+INFO: Progress: 
+INFO: Progress:  60%|██████    | 30/50 [00:13<00:09,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  62%|██████▏   | 31/50 [00:13<00:08,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  64%|██████▍   | 32/50 [00:14<00:08,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  66%|██████▌   | 33/50 [00:14<00:07,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  68%|██████▊   | 34/50 [00:15<00:07,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  70%|███████   | 35/50 [00:15<00:06,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  72%|███████▏  | 36/50 [00:16<00:06,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  74%|███████▍  | 37/50 [00:16<00:06,  2.16it/s]
+INFO: Progress: 
+INFO: Progress:   0%|          | 0/50 [00:00<?, ?it/s]
+INFO: Progress: 
+INFO: Progress:   2%|▏         | 1/50 [00:00<00:21,  2.24it/s]
+INFO: Progress: 
+INFO: Progress:   6%|▌         | 3/50 [00:00<00:13,  3.48it/s]
+INFO: Progress: 
+INFO: Progress:   8%|▊         | 4/50 [00:01<00:15,  2.88it/s]
+INFO: Progress: 
+INFO: Progress:  10%|█         | 5/50 [00:01<00:17,  2.61it/s]
+INFO: Progress: 
+INFO: Progress:  12%|█▏        | 6/50 [00:02<00:18,  2.44it/s]
+INFO: Progress: 
+INFO: Progress:  14%|█▍        | 7/50 [00:02<00:18,  2.35it/s]
+INFO: Progress: 
+INFO: Progress:  16%|█▌        | 8/50 [00:03<00:18,  2.29it/s]
+INFO: Progress: 
+INFO: Progress:  18%|█▊        | 9/50 [00:03<00:18,  2.26it/s]
+INFO: Progress: 
+INFO: Progress:  20%|██        | 10/50 [00:04<00:18,  2.22it/s]
+INFO: Progress: 
+INFO: Progress:  22%|██▏       | 11/50 [00:04<00:17,  2.21it/s]
+INFO: Progress: 
+INFO: Progress:  24%|██▍       | 12/50 [00:05<00:17,  2.18it/s]
+INFO: Progress: 
+INFO: Progress:  26%|██▌       | 13/50 [00:05<00:17,  2.17it/s]
+INFO: Progress: 
+INFO: Progress:  28%|██▊       | 14/50 [00:05<00:16,  2.17it/s]
+INFO: Progress: 
+INFO: Progress:  30%|███       | 15/50 [00:06<00:16,  2.17it/s]
+INFO: Progress: 
+INFO: Progress:  32%|███▏      | 16/50 [00:06<00:15,  2.16it/s]
+INFO: Progress: 
+INFO: Progress:  34%|███▍      | 17/50 [00:07<00:15,  2.16it/s]
+INFO: Progress: 
+INFO: Progress:  36%|███▌      | 18/50 [00:07<00:14,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  38%|███▊      | 19/50 [00:08<00:14,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  40%|████      | 20/50 [00:08<00:13,  2.16it/s]
+INFO: Progress: 
+INFO: Progress:  42%|████▏     | 21/50 [00:09<00:13,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  44%|████▍     | 22/50 [00:09<00:12,  2.16it/s]
+INFO: Progress: 
+INFO: Progress:  46%|████▌     | 23/50 [00:10<00:12,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  48%|████▊     | 24/50 [00:10<00:12,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  50%|█████     | 25/50 [00:11<00:11,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  52%|█████▏    | 26/50 [00:11<00:11,  2.16it/s]
+INFO: Progress: 
+INFO: Progress:  54%|█████▍    | 27/50 [00:12<00:10,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  56%|█████▌    | 28/50 [00:12<00:10,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  58%|█████▊    | 29/50 [00:12<00:09,  2.16it/s]
+INFO: Progress: 
+INFO: Progress:  60%|██████    | 30/50 [00:13<00:09,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  62%|██████▏   | 31/50 [00:13<00:08,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  64%|██████▍   | 32/50 [00:14<00:08,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  66%|██████▌   | 33/50 [00:14<00:07,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  68%|██████▊   | 34/50 [00:15<00:07,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  70%|███████   | 35/50 [00:15<00:06,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  72%|███████▏  | 36/50 [00:16<00:06,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  74%|███████▍  | 37/50 [00:16<00:06,  2.16it/s]
+INFO: Progress: 
+INFO: Progress:  76%|███████▌  | 38/50 [00:17<00:05,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  78%|███████▊  | 39/50 [00:17<00:05,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  80%|████████  | 40/50 [00:18<00:04,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  82%|████████▏ | 41/50 [00:18<00:04,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:   0%|          | 0/50 [00:00<?, ?it/s]
+INFO: Progress: 
+INFO: Progress:   2%|▏         | 1/50 [00:00<00:21,  2.24it/s]
+INFO: Progress: 
+INFO: Progress:   6%|▌         | 3/50 [00:00<00:13,  3.48it/s]
+INFO: Progress: 
+INFO: Progress:   8%|▊         | 4/50 [00:01<00:15,  2.88it/s]
+INFO: Progress: 
+INFO: Progress:  10%|█         | 5/50 [00:01<00:17,  2.61it/s]
+INFO: Progress: 
+INFO: Progress:  12%|█▏        | 6/50 [00:02<00:18,  2.44it/s]
+INFO: Progress: 
+INFO: Progress:  14%|█▍        | 7/50 [00:02<00:18,  2.35it/s]
+INFO: Progress: 
+INFO: Progress:  16%|█▌        | 8/50 [00:03<00:18,  2.29it/s]
+INFO: Progress: 
+INFO: Progress:  18%|█▊        | 9/50 [00:03<00:18,  2.26it/s]
+INFO: Progress: 
+INFO: Progress:  20%|██        | 10/50 [00:04<00:18,  2.22it/s]
+INFO: Progress: 
+INFO: Progress:  22%|██▏       | 11/50 [00:04<00:17,  2.21it/s]
+INFO: Progress: 
+INFO: Progress:  24%|██▍       | 12/50 [00:05<00:17,  2.18it/s]
+INFO: Progress: 
+INFO: Progress:  26%|██▌       | 13/50 [00:05<00:17,  2.17it/s]
+INFO: Progress: 
+INFO: Progress:  28%|██▊       | 14/50 [00:05<00:16,  2.17it/s]
+INFO: Progress: 
+INFO: Progress:  30%|███       | 15/50 [00:06<00:16,  2.17it/s]
+INFO: Progress: 
+INFO: Progress:  32%|███▏      | 16/50 [00:06<00:15,  2.16it/s]
+INFO: Progress: 
+INFO: Progress:  34%|███▍      | 17/50 [00:07<00:15,  2.16it/s]
+INFO: Progress: 
+INFO: Progress:  36%|███▌      | 18/50 [00:07<00:14,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  38%|███▊      | 19/50 [00:08<00:14,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  40%|████      | 20/50 [00:08<00:13,  2.16it/s]
+INFO: Progress: 
+INFO: Progress:  42%|████▏     | 21/50 [00:09<00:13,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  44%|████▍     | 22/50 [00:09<00:12,  2.16it/s]
+INFO: Progress: 
+INFO: Progress:  46%|████▌     | 23/50 [00:10<00:12,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  48%|████▊     | 24/50 [00:10<00:12,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  50%|█████     | 25/50 [00:11<00:11,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  52%|█████▏    | 26/50 [00:11<00:11,  2.16it/s]
+INFO: Progress: 
+INFO: Progress:  54%|█████▍    | 27/50 [00:12<00:10,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  56%|█████▌    | 28/50 [00:12<00:10,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  58%|█████▊    | 29/50 [00:12<00:09,  2.16it/s]
+INFO: Progress: 
+INFO: Progress:  60%|██████    | 30/50 [00:13<00:09,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  62%|██████▏   | 31/50 [00:13<00:08,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  64%|██████▍   | 32/50 [00:14<00:08,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  66%|██████▌   | 33/50 [00:14<00:07,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  68%|██████▊   | 34/50 [00:15<00:07,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  70%|███████   | 35/50 [00:15<00:06,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  72%|███████▏  | 36/50 [00:16<00:06,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  74%|███████▍  | 37/50 [00:16<00:06,  2.16it/s]
+INFO: Progress: 
+INFO: Progress:  76%|███████▌  | 38/50 [00:17<00:05,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  78%|███████▊  | 39/50 [00:17<00:05,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  80%|████████  | 40/50 [00:18<00:04,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  82%|████████▏ | 41/50 [00:18<00:04,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  84%|████████▍ | 42/50 [00:19<00:03,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  86%|████████▌ | 43/50 [00:19<00:03,  2.16it/s]
+INFO: Progress: 
+INFO: Progress:  88%|████████▊ | 44/50 [00:19<00:02,  2.16it/s]
+INFO: Progress: 
+INFO: Progress:   0%|          | 0/50 [00:00<?, ?it/s]
+INFO: Progress: 
+INFO: Progress:   2%|▏         | 1/50 [00:00<00:21,  2.24it/s]
+INFO: Progress: 
+INFO: Progress:   6%|▌         | 3/50 [00:00<00:13,  3.48it/s]
+INFO: Progress: 
+INFO: Progress:   8%|▊         | 4/50 [00:01<00:15,  2.88it/s]
+INFO: Progress: 
+INFO: Progress:  10%|█         | 5/50 [00:01<00:17,  2.61it/s]
+INFO: Progress: 
+INFO: Progress:  12%|█▏        | 6/50 [00:02<00:18,  2.44it/s]
+INFO: Progress: 
+INFO: Progress:  14%|█▍        | 7/50 [00:02<00:18,  2.35it/s]
+INFO: Progress: 
+INFO: Progress:  16%|█▌        | 8/50 [00:03<00:18,  2.29it/s]
+INFO: Progress: 
+INFO: Progress:  18%|█▊        | 9/50 [00:03<00:18,  2.26it/s]
+INFO: Progress: 
+INFO: Progress:  20%|██        | 10/50 [00:04<00:18,  2.22it/s]
+INFO: Progress: 
+INFO: Progress:  22%|██▏       | 11/50 [00:04<00:17,  2.21it/s]
+INFO: Progress: 
+INFO: Progress:  24%|██▍       | 12/50 [00:05<00:17,  2.18it/s]
+INFO: Progress: 
+INFO: Progress:  26%|██▌       | 13/50 [00:05<00:17,  2.17it/s]
+INFO: Progress: 
+INFO: Progress:  28%|██▊       | 14/50 [00:05<00:16,  2.17it/s]
+INFO: Progress: 
+INFO: Progress:  30%|███       | 15/50 [00:06<00:16,  2.17it/s]
+INFO: Progress: 
+INFO: Progress:  32%|███▏      | 16/50 [00:06<00:15,  2.16it/s]
+INFO: Progress: 
+INFO: Progress:  34%|███▍      | 17/50 [00:07<00:15,  2.16it/s]
+INFO: Progress: 
+INFO: Progress:  36%|███▌      | 18/50 [00:07<00:14,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  38%|███▊      | 19/50 [00:08<00:14,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  40%|████      | 20/50 [00:08<00:13,  2.16it/s]
+INFO: Progress: 
+INFO: Progress:  42%|████▏     | 21/50 [00:09<00:13,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  44%|████▍     | 22/50 [00:09<00:12,  2.16it/s]
+INFO: Progress: 
+INFO: Progress:  46%|████▌     | 23/50 [00:10<00:12,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  48%|████▊     | 24/50 [00:10<00:12,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  50%|█████     | 25/50 [00:11<00:11,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  52%|█████▏    | 26/50 [00:11<00:11,  2.16it/s]
+INFO: Progress: 
+INFO: Progress:  54%|█████▍    | 27/50 [00:12<00:10,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  56%|█████▌    | 28/50 [00:12<00:10,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  58%|█████▊    | 29/50 [00:12<00:09,  2.16it/s]
+INFO: Progress: 
+INFO: Progress:  60%|██████    | 30/50 [00:13<00:09,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  62%|██████▏   | 31/50 [00:13<00:08,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  64%|██████▍   | 32/50 [00:14<00:08,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  66%|██████▌   | 33/50 [00:14<00:07,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  68%|██████▊   | 34/50 [00:15<00:07,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  70%|███████   | 35/50 [00:15<00:06,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  72%|███████▏  | 36/50 [00:16<00:06,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  74%|███████▍  | 37/50 [00:16<00:06,  2.16it/s]
+INFO: Progress: 
+INFO: Progress:  76%|███████▌  | 38/50 [00:17<00:05,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  78%|███████▊  | 39/50 [00:17<00:05,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  80%|████████  | 40/50 [00:18<00:04,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  82%|████████▏ | 41/50 [00:18<00:04,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  84%|████████▍ | 42/50 [00:19<00:03,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  86%|████████▌ | 43/50 [00:19<00:03,  2.16it/s]
+INFO: Progress: 
+INFO: Progress:  88%|████████▊ | 44/50 [00:19<00:02,  2.16it/s]
+INFO: Progress: 
+INFO: Progress:   0%|          | 0/50 [00:00<?, ?it/s]
+INFO: Progress: 
+INFO: Progress:   2%|▏         | 1/50 [00:00<00:21,  2.24it/s]
+INFO: Progress: 
+INFO: Progress:   6%|▌         | 3/50 [00:00<00:13,  3.48it/s]
+INFO: Progress: 
+INFO: Progress:   8%|▊         | 4/50 [00:01<00:15,  2.88it/s]
+INFO: Progress: 
+INFO: Progress:  10%|█         | 5/50 [00:01<00:17,  2.61it/s]
+INFO: Progress: 
+INFO: Progress:  12%|█▏        | 6/50 [00:02<00:18,  2.44it/s]
+INFO: Progress: 
+INFO: Progress:  14%|█▍        | 7/50 [00:02<00:18,  2.35it/s]
+INFO: Progress: 
+INFO: Progress:  16%|█▌        | 8/50 [00:03<00:18,  2.29it/s]
+INFO: Progress: 
+INFO: Progress:  18%|█▊        | 9/50 [00:03<00:18,  2.26it/s]
+INFO: Progress: 
+INFO: Progress:  20%|██        | 10/50 [00:04<00:18,  2.22it/s]
+INFO: Progress: 
+INFO: Progress:  22%|██▏       | 11/50 [00:04<00:17,  2.21it/s]
+INFO: Progress: 
+INFO: Progress:  24%|██▍       | 12/50 [00:05<00:17,  2.18it/s]
+INFO: Progress: 
+INFO: Progress:  26%|██▌       | 13/50 [00:05<00:17,  2.17it/s]
+INFO: Progress: 
+INFO: Progress:  28%|██▊       | 14/50 [00:05<00:16,  2.17it/s]
+INFO: Progress: 
+INFO: Progress:  30%|███       | 15/50 [00:06<00:16,  2.17it/s]
+INFO: Progress: 
+INFO: Progress:  32%|███▏      | 16/50 [00:06<00:15,  2.16it/s]
+INFO: Progress: 
+INFO: Progress:  34%|███▍      | 17/50 [00:07<00:15,  2.16it/s]
+INFO: Progress: 
+INFO: Progress:  36%|███▌      | 18/50 [00:07<00:14,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  38%|███▊      | 19/50 [00:08<00:14,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  40%|████      | 20/50 [00:08<00:13,  2.16it/s]
+INFO: Progress: 
+INFO: Progress:  42%|████▏     | 21/50 [00:09<00:13,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  44%|████▍     | 22/50 [00:09<00:12,  2.16it/s]
+INFO: Progress: 
+INFO: Progress:  46%|████▌     | 23/50 [00:10<00:12,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  48%|████▊     | 24/50 [00:10<00:12,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  50%|█████     | 25/50 [00:11<00:11,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  52%|█████▏    | 26/50 [00:11<00:11,  2.16it/s]
+INFO: Progress: 
+INFO: Progress:  54%|█████▍    | 27/50 [00:12<00:10,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  56%|█████▌    | 28/50 [00:12<00:10,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  58%|█████▊    | 29/50 [00:12<00:09,  2.16it/s]
+INFO: Progress: 
+INFO: Progress:  60%|██████    | 30/50 [00:13<00:09,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  62%|██████▏   | 31/50 [00:13<00:08,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  64%|██████▍   | 32/50 [00:14<00:08,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  66%|██████▌   | 33/50 [00:14<00:07,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  68%|██████▊   | 34/50 [00:15<00:07,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  70%|███████   | 35/50 [00:15<00:06,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  72%|███████▏  | 36/50 [00:16<00:06,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  74%|███████▍  | 37/50 [00:16<00:06,  2.16it/s]
+INFO: Progress: 
+INFO: Progress:  76%|███████▌  | 38/50 [00:17<00:05,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  78%|███████▊  | 39/50 [00:17<00:05,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  80%|████████  | 40/50 [00:18<00:04,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  82%|████████▏ | 41/50 [00:18<00:04,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  84%|████████▍ | 42/50 [00:19<00:03,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  86%|████████▌ | 43/50 [00:19<00:03,  2.16it/s]
+INFO: Progress: 
+INFO: Progress:  88%|████████▊ | 44/50 [00:19<00:02,  2.16it/s]
+INFO: Progress: 
+INFO: Progress:  90%|█████████ | 45/50 [00:20<00:02,  2.17it/s]
+INFO: Progress: 
+INFO: Progress:  92%|█████████▏| 46/50 [00:20<00:01,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  94%|█████████▍| 47/50 [00:21<00:01,  2.16it/s]
+INFO: Progress: 
+INFO: Progress:  96%|█████████▌| 48/50 [00:21<00:00,  2.16it/s]
+INFO: Progress: 
+INFO: Progress:  98%|█████████▊| 49/50 [00:22<00:00,  2.16it/s]
+INFO: Progress: 
+INFO: Progress: 100%|██████████| 50/50 [00:22<00:00,  2.16it/s]
+INFO: Progress: 
+INFO: Progress: 100%|██████████| 50/50 [00:22<00:00,  2.20it/s]
+INFO: Progress: 
+INFO: Progress:   0%|          | 0/50 [00:00<?, ?it/s]
+INFO: Progress: 
+INFO: Progress:   2%|▏         | 1/50 [00:00<00:21,  2.24it/s]
+INFO: Progress: 
+INFO: Progress:   6%|▌         | 3/50 [00:00<00:13,  3.48it/s]
+INFO: Progress: 
+INFO: Progress:   8%|▊         | 4/50 [00:01<00:15,  2.88it/s]
+INFO: Progress: 
+INFO: Progress:  10%|█         | 5/50 [00:01<00:17,  2.61it/s]
+INFO: Progress: 
+INFO: Progress:  12%|█▏        | 6/50 [00:02<00:18,  2.44it/s]
+INFO: Progress: 
+INFO: Progress:  14%|█▍        | 7/50 [00:02<00:18,  2.35it/s]
+INFO: Progress: 
+INFO: Progress:  16%|█▌        | 8/50 [00:03<00:18,  2.29it/s]
+INFO: Progress: 
+INFO: Progress:  18%|█▊        | 9/50 [00:03<00:18,  2.26it/s]
+INFO: Progress: 
+INFO: Progress:  20%|██        | 10/50 [00:04<00:18,  2.22it/s]
+INFO: Progress: 
+INFO: Progress:  22%|██▏       | 11/50 [00:04<00:17,  2.21it/s]
+INFO: Progress: 
+INFO: Progress:  24%|██▍       | 12/50 [00:05<00:17,  2.18it/s]
+INFO: Progress: 
+INFO: Progress:  26%|██▌       | 13/50 [00:05<00:17,  2.17it/s]
+INFO: Progress: 
+INFO: Progress:  28%|██▊       | 14/50 [00:05<00:16,  2.17it/s]
+INFO: Progress: 
+INFO: Progress:  30%|███       | 15/50 [00:06<00:16,  2.17it/s]
+INFO: Progress: 
+INFO: Progress:  32%|███▏      | 16/50 [00:06<00:15,  2.16it/s]
+INFO: Progress: 
+INFO: Progress:  34%|███▍      | 17/50 [00:07<00:15,  2.16it/s]
+INFO: Progress: 
+INFO: Progress:  36%|███▌      | 18/50 [00:07<00:14,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  38%|███▊      | 19/50 [00:08<00:14,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  40%|████      | 20/50 [00:08<00:13,  2.16it/s]
+INFO: Progress: 
+INFO: Progress:  42%|████▏     | 21/50 [00:09<00:13,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  44%|████▍     | 22/50 [00:09<00:12,  2.16it/s]
+INFO: Progress: 
+INFO: Progress:  46%|████▌     | 23/50 [00:10<00:12,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  48%|████▊     | 24/50 [00:10<00:12,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  50%|█████     | 25/50 [00:11<00:11,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  52%|█████▏    | 26/50 [00:11<00:11,  2.16it/s]
+INFO: Progress: 
+INFO: Progress:  54%|█████▍    | 27/50 [00:12<00:10,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  56%|█████▌    | 28/50 [00:12<00:10,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  58%|█████▊    | 29/50 [00:12<00:09,  2.16it/s]
+INFO: Progress: 
+INFO: Progress:  60%|██████    | 30/50 [00:13<00:09,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  62%|██████▏   | 31/50 [00:13<00:08,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  64%|██████▍   | 32/50 [00:14<00:08,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  66%|██████▌   | 33/50 [00:14<00:07,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  68%|██████▊   | 34/50 [00:15<00:07,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  70%|███████   | 35/50 [00:15<00:06,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  72%|███████▏  | 36/50 [00:16<00:06,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  74%|███████▍  | 37/50 [00:16<00:06,  2.16it/s]
+INFO: Progress: 
+INFO: Progress:  76%|███████▌  | 38/50 [00:17<00:05,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  78%|███████▊  | 39/50 [00:17<00:05,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  80%|████████  | 40/50 [00:18<00:04,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  82%|████████▏ | 41/50 [00:18<00:04,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  84%|████████▍ | 42/50 [00:19<00:03,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  86%|████████▌ | 43/50 [00:19<00:03,  2.16it/s]
+INFO: Progress: 
+INFO: Progress:  88%|████████▊ | 44/50 [00:19<00:02,  2.16it/s]
+INFO: Progress: 
+INFO: Progress:  90%|█████████ | 45/50 [00:20<00:02,  2.17it/s]
+INFO: Progress: 
+INFO: Progress:  92%|█████████▏| 46/50 [00:20<00:01,  2.15it/s]
+INFO: Progress: 
+INFO: Progress:  94%|█████████▍| 47/50 [00:21<00:01,  2.16it/s]
+INFO: Progress: 
+INFO: Progress:  96%|█████████▌| 48/50 [00:21<00:00,  2.16it/s]
+INFO: Progress: 
+INFO: Progress:  98%|█████████▊| 49/50 [00:22<00:00,  2.16it/s]
+INFO: Progress: 
+INFO: Progress: 100%|██████████| 50/50 [00:22<00:00,  2.16it/s]
+INFO: Progress: 
+INFO: Progress: 100%|██████████| 50/50 [00:22<00:00,  2.20it/s]
+INFO: Request completed successfully
+{"url": "https://v3b.fal.media/files/b/0a8c36b8/x0YYIhWzBaVQm2g2PMOmQ_98026a2e11f04e7b864db1dd05cf8c49.png", "model": "bria/fibo-edit/restore", "operation": "restore"}

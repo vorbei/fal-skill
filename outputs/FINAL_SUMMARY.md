@@ -13,7 +13,45 @@
 | 2 | 图像编辑 | ~~fal-ai/fibo-edit/colorize~~ | ❌ 失败 | - | 错误的endpoint |
 | 3 | 图像放大 | ~~fal-ai/crystal-upscaler~~ | ✅ 成功 | ~15s | 测试用的旧endpoint |
 | 4 | 视频生成 | fal-ai/kling-video/v1/standard/text-to-video | ⏱️ 超时 | >3min | 需要更长timeout |
-| 5 | 图像编辑 | bria/fibo-edit/colorize | ⏳ 进行中 | - | 正确endpoint，测试卡住 |
+| 5 | 图像编辑 | bria/fibo-edit/colorize | ⏸️ 卡住 | - | 正确endpoint，但无响应 |
+| 6 | 图像放大 | clarityai/crystal-upscaler | ✅ 成功 | ~5s | 更新后endpoint验证通过 |
+| 7 | 图像编辑 | bria/fibo-edit/relight | ❌ 失败 | - | 缺少参数（light_direction, light_type） |
+| 8 | 图像编辑 | bria/fibo-edit/restore | ✅ 成功 | ~22s | 验证通过，50步推理 |
+| 9 | 图像上色 | bria/fibo-edit/colorize (正确参数) | ✅ 成功 | ~23s | 使用color="vivid color"参数 |
+
+---
+
+## 📦 Schema文档 (新增)
+
+### 模型Schema获取
+使用 `scripts/fetch_schemas.py` 批量获取了所有curated模型的OpenAPI schema：
+
+**成功获取**: 13/15 模型
+- fal-ai/flux/dev
+- fal-ai/z-image/base
+- fal-ai/flux-pro
+- fal-ai/birefnet/v2
+- fal-ai/kling-video/v1/standard/* (2个)
+- bria/fibo-edit/* (5个)
+- clarityai/crystal-upscaler
+- fal-ai/clarity-upscaler
+
+**404错误**: 2个模型 (可能需要特殊权限)
+- fal-ai/kling-video/v1/pro/text-to-video
+- fal-ai/kling-video/v1/pro/image-to-video
+
+### 参数文档生成
+使用 `scripts/analyze_schemas.py` 分析schemas并生成文档：
+
+**输出文档**:
+- `outputs/MODEL_PARAMETERS.md` - 76个参数的完整说明
+- `outputs/schemas/*.json` - 13个原始OpenAPI schemas
+- `outputs/MODEL_RECOMMENDATIONS.md` - 模型选择指南
+
+**关键发现**:
+- 总参数数: 76个
+- Bria模型参数验证严格（枚举值）
+- 不同模型有不同的必需参数
 
 ---
 
@@ -127,9 +165,49 @@ max_wait_time = 600  # 改为10分钟
 - 需要使用异步工作流
 **待验证**: 测试其他Bria模型
 
-### 3. Crystal Upscaler endpoint更新未测试
+### 3. Crystal Upscaler endpoint更新已验证 ✅
 **更新**: `fal-ai/crystal-upscaler` → `clarityai/crystal-upscaler`
-**状态**: 需要重新测试确认工作正常
+**状态**: 已测试，工作正常（~5秒完成）
+**输出**: `outputs/test6_crystal_corrected.json`
+
+### 4. Bria Fibo Edit 参数需求
+**问题**: 不同Fibo Edit模型需要不同的参数
+**发现**:
+- `colorize` - 测试卡住，无响应
+- `relight` - 需要额外参数：`light_direction`, `light_type`
+- `restore` - ✅ 工作正常（image_url + strength即可）
+- `reseason` - 需要验证参数
+- `restyle` - 需要验证参数
+**建议**: 为每个Fibo Edit模型更新curated.yaml中的参数说明
+
+---
+
+## 📖 Bria Fibo Edit API说明
+
+用户提供了官方API文档，揭示了正确使用方法：
+
+### 通用 Edit Endpoint
+- **主endpoint**: `bria/fibo-edit/edit`
+- **参数**:
+  - `image_url` (可选) - 参考图像
+  - `mask_url` (可选) - 遮罩图像
+  - `instruction` (可选) - 文本指令（如"change lighting to starlight nighttime"）
+  - `structured_instruction` (可选) - 结构化指令
+  - `seed` (可选) - 默认5555
+  - `steps_num` (可选) - 推理步数，20-50，默认50
+  - `guidance_scale` (可选) - 默认5
+
+### 特殊操作Endpoints
+基于测试结果：
+- `bria/fibo-edit/restore` ✅ - 简单参数（image_url + strength）
+- `bria/fibo-edit/relight` ❌ - 需要额外参数（light_direction, light_type）
+- `bria/fibo-edit/colorize` ⏸️ - 参数正确但响应慢
+
+### 建议实现策略
+1. **优先使用通用edit endpoint** - 用`instruction`参数统一处理所有操作
+2. **后备使用专用endpoints** - 如restore等简单操作
+3. **更新意图检测** - 将编辑操作映射到instruction字符串
+4. **更新curated.yaml** - 添加通用edit endpoint和正确参数
 
 ---
 
