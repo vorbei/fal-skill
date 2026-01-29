@@ -2,40 +2,65 @@ import os
 import re
 from typing import Dict, Any, Optional
 from .logging_config import setup_logging
+from .http_utils import urlopen_with_retries
+from .utils import load_api_key
 
 logger = setup_logging(__name__)
 
 class FalAPIClient:
     """Official fal_client wrapper for fal.ai API"""
 
-    def __init__(self, api_key: Optional[str] = None):
-        self.api_key = api_key or self._load_api_key()
+    def __init__(
+        self,
+        api_key: Optional[str] = None,
+        base_url: Optional[str] = None,
+        queue_url: Optional[str] = None,
+        api_host: Optional[str] = None
+    ):
+        """
+        Initialize the fal.ai API client.
+
+        Args:
+            api_key: API key for authentication. Falls back to FAL_KEY env var.
+            base_url: Custom base URL host (e.g., 'custom.fal.run').
+                      Falls back to FAL_RUN_HOST env var, then 'fal.run'.
+            queue_url: Custom queue URL host (e.g., 'queue.custom.fal.run').
+                       Falls back to FAL_QUEUE_RUN_HOST env var, then 'queue.{base_url}'.
+            api_host: Custom API host for discovery (e.g., 'api.custom.fal.ai').
+                      Falls back to FAL_API_HOST env var, then 'api.fal.ai'.
+        """
+        self.api_key = load_api_key(api_key=api_key)
+        self.base_url = base_url
+        self.queue_url = queue_url
+        self.api_host = api_host
         self._configure_fal_client()
 
-    def _load_api_key(self) -> str:
-        """Load API key from config file"""
-        config_path = os.path.expanduser("~/.config/fal-skill/.env")
-        if not os.path.exists(config_path):
-            raise ValueError("API key not found. Run /fal-setup first.")
-
-        with open(config_path, 'r') as f:
-            for line in f:
-                if line.startswith('FAL_KEY='):
-                    return line.strip().split('=', 1)[1]
-
-        raise ValueError("FAL_KEY not found in config file")
-
     def _configure_fal_client(self):
-        """Configure fal_client with API key"""
+        """Configure fal_client with API key and optional custom URLs"""
         os.environ['FAL_KEY'] = self.api_key
+
+        # Configure custom base URL if provided
+        if self.base_url:
+            os.environ['FAL_RUN_HOST'] = self.base_url
+            logger.info(f"Using custom FAL_RUN_HOST: {self.base_url}")
+
+        # Configure custom queue URL if provided
+        if self.queue_url:
+            os.environ['FAL_QUEUE_RUN_HOST'] = self.queue_url
+            logger.info(f"Using custom FAL_QUEUE_RUN_HOST: {self.queue_url}")
+
+        # Configure custom API host if provided
+        if self.api_host:
+            os.environ['FAL_API_HOST'] = self.api_host
+            logger.info(f"Using custom FAL_API_HOST: {self.api_host}")
 
     def _validate_endpoint_id(self, endpoint_id: str):
         """Validate endpoint ID format"""
         if not endpoint_id:
             raise ValueError("endpoint_id cannot be empty")
 
-        # Must be alphanumeric with dashes and slashes only
-        if not re.match(r'^[a-zA-Z0-9/_-]+$', endpoint_id):
+        # Must be alphanumeric with dashes, slashes, and dots only
+        if not re.match(r'^[a-zA-Z0-9/._-]+$', endpoint_id):
             raise ValueError(f"Invalid endpoint_id format: {endpoint_id}")
 
         # Prevent path traversal
@@ -190,6 +215,10 @@ class FalAPIClient:
 
         try:
             from fal_client import Queued, InProgress, Completed
+            try:
+                from fal_client import Failed, Canceled, Cancelled
+            except Exception:
+                Failed = Canceled = Cancelled = None
 
             status = fal_client.status(endpoint_id, request_id, with_logs=True)
 
@@ -213,6 +242,19 @@ class FalAPIClient:
                 return {
                     "status": "IN_QUEUE",
                     "position": status.position if hasattr(status, 'position') else 0
+                }
+            elif Failed is not None and isinstance(status, Failed):
+                return {
+                    "status": "FAILED",
+                    "logs": status.logs or [],
+                    "error": getattr(status, "error", None)
+                }
+            elif (Canceled is not None and isinstance(status, Canceled)) or (
+                Cancelled is not None and isinstance(status, Cancelled)
+            ):
+                return {
+                    "status": "CANCELED",
+                    "logs": status.logs or []
                 }
             else:
                 # Fallback for unknown status types
@@ -253,7 +295,10 @@ class FalAPIClient:
             params["cursor"] = cursor
 
         query_string = urllib.parse.urlencode(params)
-        url = f"https://api.fal.ai/v1/models?{query_string}"
+
+        # Use custom API host if configured, otherwise default to api.fal.ai
+        api_host = os.environ.get("FAL_API_HOST", "api.fal.ai")
+        url = f"https://{api_host}/v1/models?{query_string}"
 
         headers = {
             "Authorization": f"Key {self.api_key}",
@@ -263,7 +308,7 @@ class FalAPIClient:
         req = urllib.request.Request(url, headers=headers, method='GET')
 
         try:
-            with urllib.request.urlopen(req, timeout=30) as response:
+            with urlopen_with_retries(req, timeout=30) as response:
                 return json.loads(response.read().decode('utf-8'))
         except urllib.error.HTTPError as e:
             error_body = e.read().decode('utf-8')
