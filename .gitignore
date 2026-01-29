@@ -1,0 +1,41 @@
+# Environment files
+.env
+.env.*
+*.env
+
+# API keys and secrets
+**/credentials*
+**/secrets*
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+*.so
+.eggs/
+*.egg-info/
+*.egg
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+
+# Cache
+.cache/
+*.cache
+
+# Logs
+*.log
+
+# Build artifacts
+dist/
+build/
