@@ -45,10 +45,10 @@ fi
 
 ```bash
 # Basic
-uv run python scripts/fal_api.py generate --model "fal-ai/flux/dev" --prompt "a wizard cat" --size square_hd --steps 28 --guidance 3.5
+uv run python scripts/fal_api.py generate --model "fal-ai/flux-2" --prompt "a wizard cat" --size square_hd --steps 28 --guidance 3.5
 
 # Sizes: square_hd, square, portrait_4_3, portrait_16_9, landscape_4_3, landscape_16_9
-# Quality tiers: fast (20 steps), balanced (28 steps), high (flux-pro)
+# Quality tiers: fast (20 steps), balanced (28 steps), high (flux-2-pro)
 ```
 
 ### Video Generation
@@ -67,8 +67,8 @@ uv run python scripts/fal_api.py video --model "fal-ai/sora-2/video-to-video/rem
 ### Audio Generation (TTS)
 
 ```bash
-# Basic TTS
-uv run python scripts/fal_api.py tts --model "fal-ai/kokoro/american-english" --text "Hello world"
+# Basic TTS (ElevenLabs - 30+ languages, best quality)
+uv run python scripts/fal_api.py tts --model "fal-ai/elevenlabs/tts/turbo-v2.5" --text "Hello world"
 
 # With voice
 uv run python scripts/fal_api.py tts --model "fal-ai/elevenlabs/tts/turbo-v2.5" --text "Hello" --voice Aria

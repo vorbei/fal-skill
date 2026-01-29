@@ -1,17 +1,18 @@
-version: "1.0"
-last_updated: "2026-01-28"
+version: "1.1"
+last_updated: "2026-01-29"
 description: "Curated subset of tested, recommended fal.ai models"
 
 categories:
   text-to-image:
-    - endpoint_id: fal-ai/flux/dev
-      display_name: FLUX.1 [dev]
-      description: "Fast text-to-image generation with good quality"
+    - endpoint_id: fal-ai/flux-2
+      display_name: FLUX.2 [dev]
+      description: "Best balance of speed, quality and cost for text-to-image"
       cost_tier: standard
       speed_tier: medium
       quality_tier: high
       recommended: true
-      tested: true
+      tested: false
+      notes: "Upgraded from FLUX.1 - better prompt adherence, $0.012/MP"
       params:
         prompt: "string (required)"
         image_size: "string (optional, default: landscape_4_3)"
@@ -19,50 +20,52 @@ categories:
         guidance_scale: "float (optional, default: 3.5)"
         num_images: "int (optional, default: 1)"
 
-    - endpoint_id: fal-ai/z-image/base
-      display_name: z-image base
-      description: "Budget-friendly fast generation, lower quality"
+    - endpoint_id: fal-ai/flux-2-turbo
+      display_name: FLUX.2 Turbo
+      description: "Fastest and cheapest option, 0.6s generation at $0.008/image"
       cost_tier: budget
-      speed_tier: fast
-      quality_tier: medium
-      recommended: false
-      tested: true
-      params:
-        prompt: "string (required)"
-        negative_prompt: "string (optional)"
-
-    - endpoint_id: fal-ai/flux-pro
-      display_name: FLUX.1 [pro]
-      description: "Highest quality text-to-image, slower and more expensive"
-      cost_tier: premium
-      speed_tier: slow
-      quality_tier: highest
-      recommended: false
-      tested: true
-      params:
-        prompt: "string (required)"
-        image_size: "string (optional)"
-        num_inference_steps: "int (optional)"
-        guidance_scale: "float (optional)"
-
-    - endpoint_id: fal-ai/nano-banana-pro
-      display_name: Nano Banana Pro
-      description: "High-quality text-to-image generation"
-      cost_tier: premium
-      speed_tier: medium
+      speed_tier: fastest
       quality_tier: high
       recommended: false
       tested: false
+      notes: "Best for high-volume, speed-critical use cases"
+      params:
+        prompt: "string (required)"
+        image_size: "string (optional)"
+
+    - endpoint_id: fal-ai/flux-2-pro
+      display_name: FLUX.2 [pro]
+      description: "Highest quality, zero-config professional output at $0.03/MP"
+      cost_tier: premium
+      speed_tier: medium
+      quality_tier: highest
+      recommended: false
+      tested: false
+      notes: "Production-ready, no parameter tuning needed"
+      params:
+        prompt: "string (required)"
+        image_size: "string (optional)"
+
+    - endpoint_id: fal-ai/nano-banana-pro
+      display_name: Nano Banana Pro
+      description: "Best for photorealism, light/texture rendering (Gemini-based)"
+      cost_tier: premium
+      speed_tier: medium
+      quality_tier: highest
+      recommended: false
+      tested: false
+      notes: "Excels at product photography, consistent facial identity"
       params: {}
 
     - endpoint_id: fal-ai/gpt-image-1.5
       display_name: GPT Image 1.5
-      description: "Text-to-image generation"
+      description: "Good for environmental compositing and style coherence"
       cost_tier: premium
-      speed_tier: medium
+      speed_tier: slow
       quality_tier: high
       recommended: false
       tested: false
+      notes: "May regenerate entire image on edits - less precise control"
       params: {}
 
   background-removal:
@@ -168,36 +171,39 @@ categories:
   image-editing:
     - endpoint_id: fal-ai/qwen-image-max/edit
       display_name: Qwen Image Max Edit
-      description: "Advanced image editing"
+      description: "Best for precise edits - changes only what you ask, preserves context"
       cost_tier: standard
       speed_tier: medium
       quality_tier: high
-      recommended: false
+      recommended: true
       tested: true
+      notes: "Industry leader for semantic fidelity, excellent bilingual text rendering"
       params:
         image_urls: "array of strings (required)"
         prompt: "string (required)"
 
     - endpoint_id: fal-ai/nano-banana-pro/edit
       display_name: Nano Banana Pro Edit
-      description: "Image editing"
+      description: "Best for photorealistic edits with accurate lighting/textures"
       cost_tier: premium
       speed_tier: medium
-      quality_tier: high
+      quality_tier: highest
       recommended: false
       tested: true
+      notes: "Excels at product photography edits, glass/metal/water rendering"
       params:
         image_urls: "array of strings (required)"
         prompt: "string (required)"
 
     - endpoint_id: fal-ai/gpt-image-1.5/edit
       display_name: GPT Image 1.5 Edit
-      description: "Image editing"
+      description: "Good for style/lighting consistency, less precise control"
       cost_tier: premium
-      speed_tier: medium
+      speed_tier: slow
       quality_tier: high
       recommended: false
       tested: true
+      notes: "Warning: may regenerate entire image instead of targeted edits"
       params:
         image_urls: "array of strings (required)"
         prompt: "string (required)"
@@ -205,12 +211,13 @@ categories:
   tts:
     - endpoint_id: fal-ai/elevenlabs/tts/turbo-v2.5
       display_name: ElevenLabs Turbo v2.5
-      description: "High-speed premium TTS"
+      description: "TTS Arena #1 - 30+ languages, sub-100ms latency, best voice cloning"
       cost_tier: standard
       speed_tier: fast
       quality_tier: highest
       recommended: true
       tested: true
+      notes: "Best overall TTS - multilingual, expressive, 5-second voice cloning"
       params:
         text: "string (required)"
         voice: "string (optional, default: Aria)"
@@ -219,12 +226,13 @@ categories:
 
     - endpoint_id: fal-ai/kokoro/american-english
       display_name: Kokoro American English
-      description: "Natural American English TTS (budget)"
+      description: "Budget TTS - English only"
       cost_tier: budget
       speed_tier: fast
       quality_tier: high
       recommended: false
       tested: true
+      notes: "Limited to American English only - use ElevenLabs for multilingual"
       params:
         text: "string (required)"
         voice: "string (optional, default: af_bella)"
