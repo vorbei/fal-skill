@@ -5,7 +5,7 @@ AI-powered media generation skills for Claude Code using [fal.ai](https://fal.ai
 ## Installation
 
 ```bash
-npx @anthropic-ai/claude-code skills add https://github.com/anthropics/fal-skill --skill fal-ai
+npx skills add vorbei/fal-skill --skill fal-ai
 ```
 
 ## Available Skills
