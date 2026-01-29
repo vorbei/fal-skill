@@ -8,13 +8,14 @@ Generate images from text descriptions using fal.ai models.
 /fal-generate-image "a wizard cat wearing purple robes"
 /fal-generate-image "mountain landscape at sunset" --size landscape_16_9
 /fal-generate-image "abstract art" --quality high
+/fal-generate-image "same prompt" --force   # 强制重新生成，忽略缓存
 ```
 
 ## What it does
 
 1. Validates API key is configured
 2. Parses prompt and optional parameters
-3. Selects best text-to-image model (FLUX.1 [dev] by default)
+3. Selects best text-to-image model (FLUX.2 [dev] by default)
 4. Generates image via fal.ai API
 5. Extracts result URL using Response Adapter
 6. Displays image with metadata
@@ -41,6 +42,7 @@ Extract prompt and optional parameters from user message:
 PROMPT=""
 SIZE="square_hd"
 QUALITY="balanced"
+FORCE=""
 
 # Parse all arguments
 while [[ $# -gt 0 ]]; do
@@ -52,6 +54,10 @@ while [[ $# -gt 0 ]]; do
     --quality)
       QUALITY="$2"
       shift 2
+      ;;
+    --force)
+      FORCE="1"
+      shift
       ;;
     *)
       # Everything else is part of the prompt
@@ -75,20 +81,30 @@ if [ -z "$PROMPT" ]; then
 fi
 ```
 
-### Step 3: Select Model Based on Quality
+### Step 3: Get Model from Curated List
 
 ```bash
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && cd ../.. && pwd)"
+
+# Get recommended model from curated.yaml
+DEFAULT_MODEL=$(cd "$SCRIPT_DIR" && uv run python scripts/get_model.py text-to-image 2>/dev/null)
+if [ -z "$DEFAULT_MODEL" ]; then
+  DEFAULT_MODEL="fal-ai/flux-2"
+fi
+
 case "$QUALITY" in
   fast)
-    MODEL="fal-ai/flux/dev"
+    MODEL="$DEFAULT_MODEL"
     STEPS=20
     ;;
   balanced)
-    MODEL="fal-ai/flux/dev"
+    MODEL="$DEFAULT_MODEL"
     STEPS=28
     ;;
   high)
-    MODEL="fal-ai/flux-pro"
+    # Try to get premium model
+    PREMIUM_MODEL=$(cd "$SCRIPT_DIR" && uv run python scripts/get_model.py text-to-image --tier premium 2>/dev/null)
+    MODEL="${PREMIUM_MODEL:-fal-ai/flux-2-pro}"
     STEPS=28
     ;;
   *)
@@ -98,16 +114,64 @@ case "$QUALITY" in
 esac
 ```
 
-### Step 4: Call Python API Client
+### Step 4: Check Cache (Unless --force)
+
+Cache location: `~/.cache/fal-skill/generate/`
+
+**Cache key**: hash of `{model}:{prompt}:{size}:{steps}`
+
+Cache states:
+- `.json` - Completed result, return immediately
+- `.pending` - Request in progress, wait for it instead of duplicate submit
+
+```bash
+CACHE_DIR="$HOME/.cache/fal-skill/generate"
+mkdir -p "$CACHE_DIR"
+
+# Generate cache key
+CACHE_KEY=$(echo -n "${MODEL}:${PROMPT}:${SIZE}:${STEPS}" | md5)
+CACHE_FILE="$CACHE_DIR/${CACHE_KEY}.json"
+PENDING_FILE="$CACHE_DIR/${CACHE_KEY}.pending"
+
+# Check cache (skip if --force)
+if [ -z "$FORCE" ]; then
+  # Check completed cache
+  if [ -f "$CACHE_FILE" ]; then
+    echo "📦 Using cached result (use --force to regenerate)"
+    cat "$CACHE_FILE"
+    exit 0
+  fi
+
+  # Check if same request is pending (in queue)
+  if [ -f "$PENDING_FILE" ]; then
+    echo "⏳ Same request already in queue, waiting..."
+    # Wait for pending to complete (poll every 5s, max 5min)
+    for i in {1..60}; do
+      sleep 5
+      if [ -f "$CACHE_FILE" ]; then
+        echo "📦 Request completed by another process"
+        cat "$CACHE_FILE"
+        exit 0
+      fi
+      if [ ! -f "$PENDING_FILE" ]; then
+        break  # Pending cleared but no result, proceed to generate
+      fi
+    done
+  fi
+fi
+
+# Mark as pending before starting
+echo "$$" > "$PENDING_FILE"
+trap "rm -f '$PENDING_FILE'" EXIT
+```
+
+### Step 5: Call Python API Client
 
 ```bash
 echo "⏳ Generating image with $MODEL..."
 echo "📝 Prompt: $PROMPT"
 echo "📐 Size: $SIZE"
 echo ""
-
-# Get the script directory
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && cd ../.. && pwd)"
 
 # Execute model via Python CLI
 RESULT=$(cd "$SCRIPT_DIR" && python3 scripts/fal_api.py generate \
@@ -133,7 +197,14 @@ if [ $EXIT_CODE -ne 0 ]; then
 fi
 ```
 
-### Step 5: Display Result
+### Step 6: Save to Cache
+
+```bash
+# Save result to cache
+echo "$RESULT" > "$CACHE_FILE"
+```
+
+### Step 7: Display Result
 
 ```bash
 # Parse response
@@ -219,9 +290,9 @@ Valid options:
 - `landscape_16_9` - 1024x576
 
 ### --quality
-- `fast` - FLUX.1 dev with 20 steps (~5s)
-- `balanced` (default) - FLUX.1 dev with 28 steps (~7s)
-- `high` - FLUX.1 pro with 28 steps (~10s)
+- `fast` - FLUX.2 dev with 20 steps (~3s)
+- `balanced` (default) - FLUX.2 dev with 28 steps (~5s)
+- `high` - FLUX.2 pro with 28 steps (~7s)
 
 ## Related Skills
 

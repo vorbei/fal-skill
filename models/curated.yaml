@@ -1,17 +1,18 @@
-version: "1.0"
-last_updated: "2026-01-28"
+version: "1.1"
+last_updated: "2026-01-29"
 description: "Curated subset of tested, recommended fal.ai models"
 
 categories:
   text-to-image:
-    - endpoint_id: fal-ai/flux/dev
-      display_name: FLUX.1 [dev]
-      description: "Fast text-to-image generation with good quality"
+    - endpoint_id: fal-ai/flux-2
+      display_name: FLUX.2 [dev]
+      description: "Best balance of speed, quality and cost for text-to-image"
       cost_tier: standard
       speed_tier: medium
       quality_tier: high
       recommended: true
-      tested: true
+      tested: false
+      notes: "Upgraded from FLUX.1 - better prompt adherence, $0.012/MP"
       params:
         prompt: "string (required)"
         image_size: "string (optional, default: landscape_4_3)"
@@ -19,31 +20,53 @@ categories:
         guidance_scale: "float (optional, default: 3.5)"
         num_images: "int (optional, default: 1)"
 
-    - endpoint_id: fal-ai/z-image/base
-      display_name: z-image base
-      description: "Budget-friendly fast generation, lower quality"
+    - endpoint_id: fal-ai/flux-2-turbo
+      display_name: FLUX.2 Turbo
+      description: "Fastest and cheapest option, 0.6s generation at $0.008/image"
       cost_tier: budget
-      speed_tier: fast
-      quality_tier: medium
+      speed_tier: fastest
+      quality_tier: high
       recommended: false
-      tested: true
-      params:
-        prompt: "string (required)"
-        negative_prompt: "string (optional)"
-
-    - endpoint_id: fal-ai/flux-pro
-      display_name: FLUX.1 [pro]
-      description: "Highest quality text-to-image, slower and more expensive"
-      cost_tier: premium
-      speed_tier: slow
-      quality_tier: highest
-      recommended: false
-      tested: true
+      tested: false
+      notes: "Best for high-volume, speed-critical use cases"
       params:
         prompt: "string (required)"
         image_size: "string (optional)"
-        num_inference_steps: "int (optional)"
-        guidance_scale: "float (optional)"
+
+    - endpoint_id: fal-ai/flux-2-pro
+      display_name: FLUX.2 [pro]
+      description: "Highest quality, zero-config professional output at $0.03/MP"
+      cost_tier: premium
+      speed_tier: medium
+      quality_tier: highest
+      recommended: false
+      tested: false
+      notes: "Production-ready, no parameter tuning needed"
+      params:
+        prompt: "string (required)"
+        image_size: "string (optional)"
+
+    - endpoint_id: fal-ai/nano-banana-pro
+      display_name: Nano Banana Pro
+      description: "Best for photorealism, light/texture rendering (Gemini-based)"
+      cost_tier: premium
+      speed_tier: medium
+      quality_tier: highest
+      recommended: false
+      tested: false
+      notes: "Excels at product photography, consistent facial identity"
+      params: {}
+
+    - endpoint_id: fal-ai/gpt-image-1.5
+      display_name: GPT Image 1.5
+      description: "Good for environmental compositing and style coherence"
+      cost_tier: premium
+      speed_tier: slow
+      quality_tier: high
+      recommended: false
+      tested: false
+      notes: "May regenerate entire image on edits - less precise control"
+      params: {}
 
   background-removal:
     - endpoint_id: fal-ai/birefnet/v2
@@ -59,148 +82,256 @@ categories:
         model: "string (optional, default: General Use (Light))"
 
   text-to-video:
-    - endpoint_id: fal-ai/kling-video/v1/standard/text-to-video
-      display_name: Kling Video v1 Standard
-      description: "Text-to-video generation, 5-10 second clips"
+    - endpoint_id: fal-ai/veo3.1/fast
+      display_name: Veo 3.1 Fast
+      description: "Fast text-to-video generation"
       cost_tier: standard
-      speed_tier: slow
+      speed_tier: fast
       quality_tier: high
-      recommended: true
+      recommended: false
       tested: false
-      params:
-        prompt: "string (required)"
-        duration: "int (optional, default: 5, choices: [5, 10])"
-        aspect_ratio: "string (optional, default: '16:9', choices: ['16:9', '9:16', '1:1', '4:3', '3:4'])"
-        negative_prompt: "string (optional)"
+      params: {}
 
-    - endpoint_id: fal-ai/kling-video/v1/pro/text-to-video
-      display_name: Kling Video v1 Pro
-      description: "High-quality text-to-video, 5-10 second clips"
+    - endpoint_id: fal-ai/sora-2/text-to-video/pro
+      display_name: Sora 2 Pro (Text-to-Video)
+      description: "High-quality text-to-video generation"
       cost_tier: premium
       speed_tier: slow
       quality_tier: highest
       recommended: false
       tested: false
-      params:
-        prompt: "string (required)"
-        duration: "int (optional, default: 5, choices: [5, 10])"
-        aspect_ratio: "string (optional, default: '16:9')"
-        negative_prompt: "string (optional)"
+      params: {}
 
   image-to-video:
-    - endpoint_id: fal-ai/kling-video/v1/standard/image-to-video
-      display_name: Kling Video v1 Standard (Image-to-Video)
-      description: "Animate images with AI-generated motion"
+    - endpoint_id: fal-ai/veo3.1/fast/image-to-video
+      display_name: Veo 3.1 Fast (Image-to-Video)
+      description: "Fast image-to-video generation"
+      cost_tier: standard
+      speed_tier: fast
+      quality_tier: high
+      recommended: false
+      tested: false
+      params: {}
+
+    - endpoint_id: fal-ai/sora-2/image-to-video/pro
+      display_name: Sora 2 Pro (Image-to-Video)
+      description: "High-quality image-to-video generation"
+      cost_tier: premium
+      speed_tier: slow
+      quality_tier: highest
+      recommended: false
+      tested: false
+      params: {}
+
+  video-to-video:
+    - endpoint_id: fal-ai/veo3.1/fast/first-last-frame-to-video
+      display_name: Veo 3.1 Fast (First/Last Frame)
+      description: "Video generation from first/last frames"
+      cost_tier: standard
+      speed_tier: fast
+      quality_tier: high
+      recommended: true
+      tested: false
+      params: {}
+
+    - endpoint_id: fal-ai/sora-2/video-to-video/remix
+      display_name: Sora 2 Remix (Video-to-Video)
+      description: "Remix existing videos"
+      cost_tier: premium
+      speed_tier: slow
+      quality_tier: highest
+      recommended: false
+      tested: false
+      params: {}
+
+  video-editing:
+    - endpoint_id: fal-ai/wan-effects
+      display_name: WAN Effects
+      description: "Apply cinematic effects to existing videos"
       cost_tier: standard
       speed_tier: slow
       quality_tier: high
       recommended: true
       tested: false
       params:
-        image_url: "string (required)"
-        prompt: "string (optional, motion description)"
-        duration: "int (optional, default: 5, choices: [5, 10])"
-        negative_prompt: "string (optional)"
+        video_url: "string (required)"
+        prompt: "string (optional, effect description)"
 
-    - endpoint_id: fal-ai/kling-video/v1/pro/image-to-video
-      display_name: Kling Video v1 Pro (Image-to-Video)
-      description: "High-quality image animation"
-      cost_tier: premium
-      speed_tier: slow
-      quality_tier: highest
+    - endpoint_id: veed/video-background-removal
+      display_name: VEED Video Background Removal
+      description: "Remove background from videos"
+      cost_tier: standard
+      speed_tier: medium
+      quality_tier: high
       recommended: false
       tested: false
       params:
-        image_url: "string (required)"
-        prompt: "string (optional)"
-        duration: "int (optional, default: 5)"
+        video_url: "string (required)"
 
   image-editing:
-    - endpoint_id: bria/fibo-edit/colorize
-      display_name: Fibo Edit - Colorize
-      description: "Add natural color to black & white photos"
-      cost_tier: budget
-      speed_tier: fast
-      quality_tier: high
-      recommended: true
-      tested: false
-      params:
-        image_url: "string (required)"
-        strength: "float (optional, default: 0.8, range: 0-1)"
-
-    - endpoint_id: bria/fibo-edit/relight
-      display_name: Fibo Edit - Relight
-      description: "Change lighting conditions in photos"
-      cost_tier: budget
-      speed_tier: fast
-      quality_tier: high
-      recommended: true
-      tested: false
-      params:
-        image_url: "string (required)"
-        lighting_prompt: "string (optional, lighting description)"
-        strength: "float (optional, default: 0.8)"
-
-    - endpoint_id: bria/fibo-edit/reseason
-      display_name: Fibo Edit - Reseason
-      description: "Transform the season in outdoor photos"
-      cost_tier: budget
-      speed_tier: fast
-      quality_tier: high
-      recommended: true
-      tested: false
-      params:
-        image_url: "string (required)"
-        season: "string (optional, choices: ['spring', 'summer', 'fall', 'winter'])"
-
-    - endpoint_id: bria/fibo-edit/restore
-      display_name: Fibo Edit - Restore
-      description: "Repair old, damaged, or low-quality photos"
-      cost_tier: budget
-      speed_tier: fast
-      quality_tier: high
-      recommended: true
-      tested: false
-      params:
-        image_url: "string (required)"
-        strength: "float (optional, default: 0.8)"
-
-    - endpoint_id: bria/fibo-edit/restyle
-      display_name: Fibo Edit - Restyle
-      description: "Apply artistic styles to photos"
-      cost_tier: budget
-      speed_tier: fast
-      quality_tier: high
-      recommended: true
-      tested: false
-      params:
-        image_url: "string (required)"
-        style_prompt: "string (optional, style description)"
-        strength: "float (optional, default: 0.8)"
-
-  upscale:
-    - endpoint_id: clarityai/crystal-upscaler
-      display_name: Crystal Upscaler
-      description: "General-purpose AI upscaling (2x, 4x, 8x)"
+    - endpoint_id: fal-ai/qwen-image-max/edit
+      display_name: Qwen Image Max Edit
+      description: "Best for precise edits - changes only what you ask, preserves context"
       cost_tier: standard
       speed_tier: medium
       quality_tier: high
       recommended: true
-      tested: false
+      tested: true
+      notes: "Industry leader for semantic fidelity, excellent bilingual text rendering"
       params:
-        image_url: "string (optional, for image upscaling)"
-        video_url: "string (optional, for video upscaling)"
-        scale: "int (required, choices: [2, 4, 8])"
-        creativity: "float (optional, default: 0.35, range: 0-1)"
+        image_urls: "array of strings (required)"
+        prompt: "string (required)"
 
-    - endpoint_id: fal-ai/clarity-upscaler
-      display_name: Clarity Upscaler
-      description: "Photo-optimized upscaling (2x, 4x)"
+    - endpoint_id: fal-ai/nano-banana-pro/edit
+      display_name: Nano Banana Pro Edit
+      description: "Best for photorealistic edits with accurate lighting/textures"
       cost_tier: premium
       speed_tier: medium
       quality_tier: highest
       recommended: false
-      tested: false
+      tested: true
+      notes: "Excels at product photography edits, glass/metal/water rendering"
+      params:
+        image_urls: "array of strings (required)"
+        prompt: "string (required)"
+
+    - endpoint_id: fal-ai/gpt-image-1.5/edit
+      display_name: GPT Image 1.5 Edit
+      description: "Good for style/lighting consistency, less precise control"
+      cost_tier: premium
+      speed_tier: slow
+      quality_tier: high
+      recommended: false
+      tested: true
+      notes: "Warning: may regenerate entire image instead of targeted edits"
+      params:
+        image_urls: "array of strings (required)"
+        prompt: "string (required)"
+
+  tts:
+    - endpoint_id: fal-ai/elevenlabs/tts/turbo-v2.5
+      display_name: ElevenLabs Turbo v2.5
+      description: "TTS Arena #1 - 30+ languages, sub-100ms latency, best voice cloning"
+      cost_tier: standard
+      speed_tier: fast
+      quality_tier: highest
+      recommended: true
+      tested: true
+      notes: "Best overall TTS - multilingual, expressive, 5-second voice cloning"
+      params:
+        text: "string (required)"
+        voice: "string (optional, default: Aria)"
+        stability: "float (optional, default: 0.5)"
+        similarity_boost: "float (optional, default: 0.75)"
+
+    - endpoint_id: fal-ai/kokoro/american-english
+      display_name: Kokoro American English
+      description: "Budget TTS - English only"
+      cost_tier: budget
+      speed_tier: fast
+      quality_tier: high
+      recommended: false
+      tested: true
+      notes: "Limited to American English only - use ElevenLabs for multilingual"
+      params:
+        text: "string (required)"
+        voice: "string (optional, default: af_bella)"
+        speed: "float (optional, default: 1.0)"
+
+    - endpoint_id: fal-ai/qwen-3-tts/voice-design/1.7b
+      display_name: Qwen 3 TTS Voice Design 1.7B
+      description: "TTS with voice design and style prompts"
+      cost_tier: standard
+      speed_tier: medium
+      quality_tier: high
+      recommended: false
+      tested: true
+      params:
+        text: "string (required)"
+        prompt: "string (required, voice style description)"
+
+    - endpoint_id: fal-ai/minimax/speech-2.6-hd
+      display_name: MiniMax Speech 2.6 HD
+      description: "High-definition text-to-speech"
+      cost_tier: premium
+      speed_tier: medium
+      quality_tier: high
+      recommended: false
+      tested: true
+      params:
+        text: "string (required)"
+        voice: "string (optional)"
+
+  music-audio:
+    - endpoint_id: fal-ai/elevenlabs/music
+      display_name: ElevenLabs Music
+      description: "AI music generation by ElevenLabs"
+      cost_tier: premium
+      speed_tier: medium
+      quality_tier: high
+      recommended: true
+      tested: true
+      params:
+        prompt: "string (required)"
+
+    - endpoint_id: fal-ai/minimax-music/v2
+      display_name: MiniMax Music v2
+      description: "AI music generation with lyrics by MiniMax"
+      cost_tier: standard
+      speed_tier: medium
+      quality_tier: high
+      recommended: false
+      tested: true
+      params:
+        prompt: "string (required, music style/mood description)"
+        lyrics_prompt: "string (required, song lyrics with optional structure tags like [verse], [chorus])"
+
+    - endpoint_id: cassetteai/sound-effects-generator
+      display_name: CassetteAI SFX
+      description: "Fast sound effects generation"
+      cost_tier: standard
+      speed_tier: fast
+      quality_tier: high
+      recommended: true
+      tested: true
+      params:
+        prompt: "string (required)"
+        duration: "int (required)"
+
+  lipsync-avatar:
+    - endpoint_id: veed/fabric-1.0
+      display_name: VEED Fabric 1.0
+      description: "Avatar lipsync by VEED"
+      cost_tier: standard
+      speed_tier: medium
+      quality_tier: high
+      recommended: true
+      tested: true
       params:
         image_url: "string (required)"
-        scale: "int (required, choices: [2, 4])"
+        audio_url: "string (required)"
+        resolution: "string (required, choices: ['720p', '480p'])"
+
+    - endpoint_id: fal-ai/ltx-2-19b/audio-to-video
+      display_name: LTX 2 19B Audio-to-Video
+      description: "Audio-driven video generation"
+      cost_tier: standard
+      speed_tier: medium
+      quality_tier: high
+      recommended: false
+      tested: true
+      params:
+        prompt: "string (required)"
+        audio_url: "string (required)"
+
+  asr:
+    - endpoint_id: fal-ai/elevenlabs/speech-to-text/scribe-v2
+      display_name: ElevenLabs Scribe v2
+      description: "Speech-to-text transcription"
+      cost_tier: standard
+      speed_tier: fast
+      quality_tier: high
+      recommended: true
+      tested: true
+      params:
+        audio_url: "string (required)"
