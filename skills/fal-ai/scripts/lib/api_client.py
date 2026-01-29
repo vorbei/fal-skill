@@ -10,13 +10,49 @@ logger = setup_logging(__name__)
 class FalAPIClient:
     """Official fal_client wrapper for fal.ai API"""
 
-    def __init__(self, api_key: Optional[str] = None):
+    def __init__(
+        self,
+        api_key: Optional[str] = None,
+        base_url: Optional[str] = None,
+        queue_url: Optional[str] = None,
+        api_host: Optional[str] = None
+    ):
+        """
+        Initialize the fal.ai API client.
+
+        Args:
+            api_key: API key for authentication. Falls back to FAL_KEY env var.
+            base_url: Custom base URL host (e.g., 'custom.fal.run').
+                      Falls back to FAL_RUN_HOST env var, then 'fal.run'.
+            queue_url: Custom queue URL host (e.g., 'queue.custom.fal.run').
+                       Falls back to FAL_QUEUE_RUN_HOST env var, then 'queue.{base_url}'.
+            api_host: Custom API host for discovery (e.g., 'api.custom.fal.ai').
+                      Falls back to FAL_API_HOST env var, then 'api.fal.ai'.
+        """
         self.api_key = load_api_key(api_key=api_key)
+        self.base_url = base_url
+        self.queue_url = queue_url
+        self.api_host = api_host
         self._configure_fal_client()
 
     def _configure_fal_client(self):
-        """Configure fal_client with API key"""
+        """Configure fal_client with API key and optional custom URLs"""
         os.environ['FAL_KEY'] = self.api_key
+
+        # Configure custom base URL if provided
+        if self.base_url:
+            os.environ['FAL_RUN_HOST'] = self.base_url
+            logger.info(f"Using custom FAL_RUN_HOST: {self.base_url}")
+
+        # Configure custom queue URL if provided
+        if self.queue_url:
+            os.environ['FAL_QUEUE_RUN_HOST'] = self.queue_url
+            logger.info(f"Using custom FAL_QUEUE_RUN_HOST: {self.queue_url}")
+
+        # Configure custom API host if provided
+        if self.api_host:
+            os.environ['FAL_API_HOST'] = self.api_host
+            logger.info(f"Using custom FAL_API_HOST: {self.api_host}")
 
     def _validate_endpoint_id(self, endpoint_id: str):
         """Validate endpoint ID format"""
@@ -259,7 +295,10 @@ class FalAPIClient:
             params["cursor"] = cursor
 
         query_string = urllib.parse.urlencode(params)
-        url = f"https://api.fal.ai/v1/models?{query_string}"
+
+        # Use custom API host if configured, otherwise default to api.fal.ai
+        api_host = os.environ.get("FAL_API_HOST", "api.fal.ai")
+        url = f"https://{api_host}/v1/models?{query_string}"
 
         headers = {
             "Authorization": f"Key {self.api_key}",
