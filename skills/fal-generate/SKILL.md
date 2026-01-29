@@ -1,25 +1,14 @@
 # /fal-generate
 
-Universal generation orchestrator - detects intent and routes to specialized skills.
-
-## Usage
-
-```
-/fal-generate "a wizard cat"
-/fal-generate "remove background from image.jpg"
-/fal-generate "portrait of a warrior in high quality"
-```
-
-## What it does
-
-1. Analyzes user request to detect intent
-2. Routes to appropriate specialized skill
-3. Passes through parameters
-4. Provides clear feedback on detected intent
+Universal AI media generation - generates images, videos, audio, music, and more.
 
 ## Instructions
 
-### Step 1: Validate API Key
+Analyze the user's request and determine what they want to generate. Claude Code should understand the intent directly and call the appropriate `fal_api.py` command.
+
+### Prerequisites
+
+Before executing any generation, verify the API key is configured:
 
 ```bash
 if [ ! -f ~/.config/fal-skill/.env ]; then
@@ -28,216 +17,262 @@ if [ ! -f ~/.config/fal-skill/.env ]; then
 fi
 ```
 
-### Step 2: Parse User Request
+### Intent Classification
+
+| Intent | Triggers (examples) | Command |
+|--------|---------------------|---------|
+| **Image Generation** | Default; "画", "生成图片", "create image", "draw" | `generate` |
+| **Video Generation** | "视频", "video", "animate", "动画", "clip" | `video` |
+| **Image-to-Video** | Has image + "变成视频", "animate this", "make it move" | `video --image-url` |
+| **Background Removal** | "去背景", "抠图", "remove bg", "transparent", "cutout" | Use `/fal-remove-bg` |
+| **TTS** | "朗读", "说", "speak", "voice", "tts", "read aloud" | `tts` |
+| **Music** | "音乐", "music", "歌曲", "song", "bgm", "soundtrack" | `music` |
+| **Sound Effects** | "音效", "sound effect", "sfx" | `music` (cassetteai model) |
+| **Avatar/Lipsync** | "口型", "avatar", "lipsync", "talking head" | `avatar` |
+| **Transcribe** | "转文字", "transcribe", "听写", "speech to text" | `transcribe` |
+| **Upscale** | "放大", "upscale", "enhance", "超分", "2x/4x/8x" | `upscale` |
+| **Photo Edit** | "调色", "打光", "colorize", "relight", "reseason" | `edit` |
+
+### Intent Priority (Conflict Resolution)
+
+When a request matches multiple intents, use this priority order:
+
+1. **Upscale** - If explicit scale keywords (2x, 4x, 8x, upscale, 放大, 超分)
+2. **Background Removal** - If "background", "去背景", "抠图", "transparent"
+3. **Transcribe** - If "transcribe", "转文字", "听写" with audio file
+4. **Avatar** - If "avatar", "lipsync", "口型" with image+audio
+5. **TTS** - If "speak", "朗读", "tts", "voice" (speech output)
+6. **Music/SFX** - If "music", "音乐", "sfx", "音效" (no video context)
+7. **Video** - If "video", "视频", "animate", "动画"
+8. **Photo Edit** - If editing keywords with existing image (colorize, relight, reseason)
+9. **Image Generation** - Default fallback for creative prompts
+
+### Ambiguous Cases
+
+| Request | Correct Intent | Reasoning |
+|---------|---------------|-----------|
+| "remove the person from photo.jpg" | Photo Edit (remove-object) | "remove" + object subject = object removal |
+| "remove background from photo.jpg" | Background Removal | "background" keyword = bg removal |
+| "make the image larger" | Upscale | "larger" without creative context = upscale |
+| "create a larger castle image" | Image Generation | "larger" in creative context = image gen |
+| "music video of a band" | Video Generation | "video" takes precedence over "music" |
+| "generate music for my video" | Music Generation | "music" is the output, video is context |
+| "enhance photo.jpg" | Upscale | "enhance" alone = quality improvement |
+| "enhance the colors in photo.jpg" | Photo Edit (colorize) | "colors" specifies editing operation |
+
+### Parameter Extraction
+
+Extract these parameters from the user's request:
+
+**Video parameters:**
+- Duration: "短视频" → 5, "长一点" → 10, "10秒/10 seconds" → 10
+- Aspect ratio: "手机看/vertical/portrait/tiktok" → 9:16, "横屏/widescreen" → 16:9, "方形/square" → 1:1
+
+**Image parameters:**
+- Size: "竖版/portrait" → portrait_16_9, "横版/landscape" → landscape_16_9, default → square_hd
+- Quality: "快速/fast" → fewer steps, "精细/detailed" → more steps
+
+**Upscale parameters:**
+- Scale: "2倍/2x" → 2, "4倍/4x" → 4, "8倍/8x" → 8 (default: 2)
+
+### Default Models
+
+| Task | Model |
+|------|-------|
+| Image Generation | `fal-ai/flux.2/dev` |
+| Text-to-Video | `fal-ai/kling-video/v2/standard/text-to-video` |
+| Image-to-Video | `fal-ai/kling-video/v2/standard/image-to-video` |
+| TTS | `fal-ai/kokoro/american-english` |
+| Music | `fal-ai/minimax-music/v2` |
+| Sound Effects | `cassetteai/sound-effects-generator` |
+| Avatar | `fal-ai/kling-video/ai-avatar/v2/standard` |
+| Transcribe | `fal-ai/elevenlabs/speech-to-text/scribe-v2` |
+| Upscale (Image) | `fal-ai/crystal/upscale` |
+| Photo Colorize | `fal-ai/fibo-edit/colorize` |
+| Photo Relight | `fal-ai/fibo-edit/relight` |
+| Photo Reseason | `fal-ai/fibo-edit/reseason` |
+| Photo Restyle | `fal-ai/fibo-edit/restyle` |
+
+### Execution
+
+The skill directory is at: `~/.claude/skills/fal-ai/fal-ai`
+
+Run commands using `uv`:
 
 ```bash
-USER_REQUEST="$*"
-
-if [ -z "$USER_REQUEST" ]; then
-  echo "❌ Request required. Usage: /fal-generate <what you want>"
-  echo ""
-  echo "Examples:"
-  echo "  /fal-generate \"a fantasy castle\""
-  echo "  /fal-generate \"remove background from photo.jpg\""
-  echo "  /fal-generate \"portrait of a warrior in high quality\""
-  exit 1
-fi
+cd ~/.claude/skills/fal-ai/fal-ai && uv run python scripts/fal_api.py <command> [options]
 ```
 
-### Step 3: Detect Intent
+### File/URL Handling
 
-```bash
-# Get the script directory
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && cd ../.. && pwd)"
-
-# Detect intent using Python helper
-INTENT=$(cd "$SCRIPT_DIR" && python3 scripts/detect_intent.py "$USER_REQUEST" 2>&1)
-INTENT_EXIT=$?
-
-if [ $INTENT_EXIT -ne 0 ]; then
-  echo "❌ Could not understand request: $USER_REQUEST"
-  echo ""
-  echo "Try being more specific:"
-  echo "  - For images: \"a wizard cat wearing purple robes\""
-  echo "  - For background removal: \"remove background from image.jpg\""
-  exit 1
-fi
-
-# Parse intent JSON
-SKILL=$(echo "$INTENT" | python3 -c "import sys, json; print(json.load(sys.stdin)['skill'])" 2>/dev/null)
-ARGS=$(echo "$INTENT" | python3 -c "import sys, json; print(' '.join(json.load(sys.stdin)['args']))" 2>/dev/null)
-
-if [ -z "$SKILL" ]; then
-  echo "❌ Failed to parse intent"
-  echo "$INTENT"
-  exit 1
-fi
-
-echo "🎯 Detected: $SKILL"
-echo "📝 Request: $USER_REQUEST"
-echo ""
-```
-
-### Step 4: Route to Specialized Skill
-
-```bash
-# Route to appropriate skill based on detected intent
-case "$SKILL" in
-  fal-generate-image)
-    # Call fal-generate-image with detected args
-    # The detect_intent script returns args in the format:
-    # ["prompt text", "--size SIZE", "--quality QUALITY"]
-    exec "$SCRIPT_DIR/skills/fal-generate-image/SKILL.md" $ARGS
-    ;;
-
-  fal-generate-video)
-    # Call fal-generate-video with detected args
-    # The detect_intent script returns args in the format:
-    # ["prompt text", "--duration N", "--aspect-ratio RATIO"]
-    # or ["prompt text", "--image-url URL", "--duration N", "--aspect-ratio RATIO"]
-    exec "$SCRIPT_DIR/skills/fal-generate-video/SKILL.md" $ARGS
-    ;;
-
-  fal-edit-photo)
-    # Call fal-edit-photo with detected args
-    # The detect_intent script returns args in the format:
-    # ["image_url", "--operation OP", "--prompt PROMPT"]
-    exec "$SCRIPT_DIR/skills/fal-edit-photo/SKILL.md" $ARGS
-    ;;
-
-  fal-upscale)
-    # Call fal-upscale with detected args
-    # The detect_intent script returns args in the format:
-    # ["file_url", "--scale N", "--type TYPE"]
-    exec "$SCRIPT_DIR/skills/fal-upscale/SKILL.md" $ARGS
-    ;;
-
-  fal-remove-bg)
-    # Call fal-remove-bg with detected args
-    # The detect_intent script returns args in the format:
-    # ["image_url_or_path"]
-    exec "$SCRIPT_DIR/skills/fal-remove-bg/SKILL.md" $ARGS
-    ;;
-
-  *)
-    echo "❌ Unknown skill: $SKILL"
-    echo ""
-    echo "Supported skills:"
-    echo "  - fal-generate-image (text-to-image generation)"
-    echo "  - fal-generate-video (text-to-video, image-to-video)"
-    echo "  - fal-edit-photo (advanced image editing)"
-    echo "  - fal-upscale (image/video enhancement)"
-    echo "  - fal-remove-bg (background removal)"
-    exit 1
-    ;;
-esac
-```
-
-## Intent Detection Examples
-
-**Text-to-Video**:
-- `"create a video of a wizard cat"` → `/fal-generate-video "..." --duration 5 --aspect-ratio 16:9`
-- `"10 second video of ocean waves"` → `/fal-generate-video "..." --duration 10 --aspect-ratio 16:9`
-- `"vertical video of fireworks"` → `/fal-generate-video "..." --duration 5 --aspect-ratio 9:16`
-
-**Image-to-Video** (animate images):
-- `"animate this image: cat.jpg"` → `/fal-generate-video "..." --image-url cat.jpg --duration 5`
-- `"make portrait.jpg move"` → `/fal-generate-video "..." --image-url portrait.jpg --duration 5`
-
-**Photo Editing**:
-- `"colorize photo.jpg"` → `/fal-edit-photo photo.jpg --operation colorize`
-- `"relight image.jpg with sunset"` → `/fal-edit-photo image.jpg --operation relight --lighting-prompt "sunset"`
-- `"change season to winter in landscape.jpg"` → `/fal-edit-photo landscape.jpg --operation reseason --season winter`
-
-**Upscaling**:
-- `"upscale image.jpg 2x"` → `/fal-upscale image.jpg --scale 2 --type image`
-- `"enhance video.mp4 4x"` → `/fal-upscale video.mp4 --scale 4 --type video`
-
-**Background Removal**:
-- `"remove background from photo.jpg"` → `/fal-remove-bg photo.jpg`
-- `"make transparent: image.png"` → `/fal-remove-bg image.png`
-- `"cut out https://example.com/photo.jpg"` → `/fal-remove-bg https://example.com/photo.jpg`
-
-**Text-to-Image** (default fallback):
-- `"a wizard cat"` → `/fal-generate-image "a wizard cat" --size square_hd --quality balanced`
-- `"portrait of a warrior"` → `/fal-generate-image "of a warrior" --size portrait_16_9 --quality balanced`
-- `"quick sketch of a car"` → `/fal-generate-image "sketch of a car" --size square_hd --quality fast`
-- `"detailed landscape"` → `/fal-generate-image "landscape" --size square_hd --quality high`
-
-## Error Handling
-
-### Empty Request
-```
-❌ Request required. Usage: /fal-generate <what you want>
-
-Examples:
-  /fal-generate "a fantasy castle"
-  /fal-generate "remove background from photo.jpg"
-  /fal-generate "portrait of a warrior in high quality"
-```
-
-### Intent Detection Failed
-```
-❌ Could not understand request: [request]
-
-Try being more specific:
-  - For images: "a wizard cat wearing purple robes"
-  - For background removal: "remove background from image.jpg"
-```
-
-### Skill Execution Failed
-```
-❌ [Skill] failed: [error]
-
-[Error details from specialized skill]
-```
+- If user provides a local file path, first upload it: `uv run python scripts/upload_image.py <path>`
+- Use the returned URL as `--image-url`, `--video-url`, or `--audio-url`
+- If user says "这张图", "this image", etc., use the most recently generated/mentioned file
 
 ## Examples
 
+### Image Generation
+
+User: "帮我画一只猫"
 ```bash
-# Simple image generation
-/fal-generate "a serene mountain landscape"
-
-# Image with size hint
-/fal-generate "portrait of a warrior"
-
-# Image with quality hint
-/fal-generate "high quality detailed painting"
-
-# Background removal from URL
-/fal-generate "remove background from https://example.com/photo.jpg"
-
-# Background removal from local file
-/fal-generate "make photo.png transparent"
-
-# Fast generation
-/fal-generate "quick sketch of a spaceship"
+cd ~/.claude/skills/fal-ai/fal-ai && uv run python scripts/fal_api.py generate \
+  --model fal-ai/flux.2/dev \
+  --prompt "a cat"
 ```
 
-## How Intent Detection Works
+User: "a portrait of a warrior in high quality"
+```bash
+cd ~/.claude/skills/fal-ai/fal-ai && uv run python scripts/fal_api.py generate \
+  --model fal-ai/flux.2/dev \
+  --prompt "a portrait of a warrior" \
+  --size portrait_16_9 \
+  --steps 50
+```
 
-The orchestrator uses `scripts/detect_intent.py` to analyze requests:
+### Video Generation
 
-1. **Keyword Matching**: Looks for phrases like "remove background", "transparent", "cut out"
-2. **Size Hints**: Detects "portrait", "landscape", "square" in the prompt
-3. **Quality Hints**: Detects "fast", "quick", "high quality", "detailed"
-4. **Default Behavior**: Assumes text-to-image if no background removal keywords
+User: "生成一个海浪的视频"
+```bash
+cd ~/.claude/skills/fal-ai/fal-ai && uv run python scripts/fal_api.py video \
+  --model fal-ai/kling-video/v2/standard/text-to-video \
+  --prompt "ocean waves crashing on beach" \
+  --duration 5 \
+  --aspect-ratio 16:9
+```
 
-The detected intent is then translated into appropriate skill calls with the right parameters.
+User: "适合手机看的短视频，一只猫在跳舞"
+```bash
+cd ~/.claude/skills/fal-ai/fal-ai && uv run python scripts/fal_api.py video \
+  --model fal-ai/kling-video/v2/standard/text-to-video \
+  --prompt "a cat dancing" \
+  --duration 5 \
+  --aspect-ratio 9:16
+```
 
-## Future Enhancements
+### Image-to-Video
 
-**Phase 3 - Conversational Context**:
-- "make it bigger" → understands "it" refers to last result
-- "remove the background" → implies from last generated image
-- "try again with more detail" → re-runs with modified parameters
+User: "把这张图变成视频 cat.jpg"
+```bash
+# First upload the image
+cd ~/.claude/skills/fal-ai/fal-ai && uv run python scripts/upload_image.py cat.jpg
+# Then generate video (use returned URL)
+cd ~/.claude/skills/fal-ai/fal-ai && uv run python scripts/fal_api.py video \
+  --model fal-ai/kling-video/v2/standard/image-to-video \
+  --image-url <uploaded_url> \
+  --prompt "the cat starts walking" \
+  --duration 5
+```
 
-**Phase 4 - Multi-Step Workflows**:
-- "generate a cat and remove its background" → chain operations
-- Session-based memory for complex tasks
+### Text-to-Speech
+
+User: "朗读这段话：今天天气真好"
+```bash
+cd ~/.claude/skills/fal-ai/fal-ai && uv run python scripts/fal_api.py tts \
+  --model fal-ai/kokoro/american-english \
+  --text "今天天气真好"
+```
+
+User: "speak this in a warm voice: Hello world"
+```bash
+cd ~/.claude/skills/fal-ai/fal-ai && uv run python scripts/fal_api.py tts \
+  --model fal-ai/kokoro/american-english \
+  --text "Hello world" \
+  --voice af_heart
+```
+
+### Music Generation
+
+User: "生成一段轻松的背景音乐"
+```bash
+cd ~/.claude/skills/fal-ai/fal-ai && uv run python scripts/fal_api.py music \
+  --model fal-ai/minimax-music/v2 \
+  --prompt "relaxing background music, ambient, calm" \
+  --duration 30
+```
+
+User: "explosion sound effect"
+```bash
+cd ~/.claude/skills/fal-ai/fal-ai && uv run python scripts/fal_api.py music \
+  --model cassetteai/sound-effects-generator \
+  --prompt "explosion, cinematic"
+```
+
+### Avatar / Lipsync
+
+User: "用这张照片和音频做口型同步 portrait.jpg audio.mp3"
+```bash
+# Upload both files first
+cd ~/.claude/skills/fal-ai/fal-ai && uv run python scripts/upload_image.py portrait.jpg
+cd ~/.claude/skills/fal-ai/fal-ai && uv run python scripts/upload_image.py audio.mp3
+# Then create avatar
+cd ~/.claude/skills/fal-ai/fal-ai && uv run python scripts/fal_api.py avatar \
+  --model fal-ai/kling-video/ai-avatar/v2/standard \
+  --image-url <portrait_url> \
+  --audio-url <audio_url>
+```
+
+### Transcription
+
+User: "把这段音频转成文字 meeting.mp3"
+```bash
+# Upload audio first
+cd ~/.claude/skills/fal-ai/fal-ai && uv run python scripts/upload_image.py meeting.mp3
+# Then transcribe
+cd ~/.claude/skills/fal-ai/fal-ai && uv run python scripts/fal_api.py transcribe \
+  --model fal-ai/elevenlabs/speech-to-text/scribe-v2 \
+  --audio-url <uploaded_url>
+```
+
+### Upscale
+
+User: "放大这张图4倍 img.png"
+```bash
+cd ~/.claude/skills/fal-ai/fal-ai && uv run python scripts/upload_image.py img.png
+cd ~/.claude/skills/fal-ai/fal-ai && uv run python scripts/fal_api.py upscale \
+  --model fal-ai/crystal/upscale \
+  --image-url <uploaded_url> \
+  --scale 4
+```
+
+### Photo Editing
+
+User: "让照片更温暖 photo.jpg"
+```bash
+cd ~/.claude/skills/fal-ai/fal-ai && uv run python scripts/upload_image.py photo.jpg
+cd ~/.claude/skills/fal-ai/fal-ai && uv run python scripts/fal_api.py edit \
+  --model fal-ai/fibo-edit/relight \
+  --image-url <uploaded_url> \
+  --light-type "sunrise light"
+```
+
+User: "把这张照片变成冬天的场景 landscape.jpg"
+```bash
+cd ~/.claude/skills/fal-ai/fal-ai && uv run python scripts/upload_image.py landscape.jpg
+cd ~/.claude/skills/fal-ai/fal-ai && uv run python scripts/fal_api.py edit \
+  --model fal-ai/fibo-edit/reseason \
+  --image-url <uploaded_url> \
+  --season winter
+```
+
+User: "colorize this old photo vintage.jpg"
+```bash
+cd ~/.claude/skills/fal-ai/fal-ai && uv run python scripts/upload_image.py vintage.jpg
+cd ~/.claude/skills/fal-ai/fal-ai && uv run python scripts/fal_api.py edit \
+  --model fal-ai/fibo-edit/colorize \
+  --image-url <uploaded_url> \
+  --color "contemporary color"
+```
+
+## Error Handling
+
+If a command fails:
+1. Check if the API key is configured: `~/.config/fal-skill/.env`
+2. Check if the file exists and is accessible
+3. Report the error message to the user
+4. Suggest alternatives or corrections
 
 ## Related Skills
 
-- `/fal-generate-image` - Direct image generation
-- `/fal-remove-bg` - Direct background removal
+- `/fal-remove-bg` - Background removal (specialized)
+- `/fal-generate-video` - Video generation (specialized)
 - `/fal-setup` - Configure API key
